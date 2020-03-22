@@ -1,7 +1,9 @@
 <template>
-  <div class="data-entry-container">
+  <div class="data-entry-container" style="width: 100%;">
     <div class="data-entry-header">
-      <div><el-button type="primary" @click="onSubmit">新增领导干部</el-button></div>
+      <div>
+        <router-link to="/dataEntry/components"><el-button type="primary">新增领导干部</el-button></router-link>
+      </div>
 
       <div>
         <span class="demonstration">开始时间</span>
@@ -135,6 +137,7 @@ export default {
   margin: 1.25rem;
   display: flex;
   justify-content: space-between;
+  
 }
 .data-entry-body {
   margin: 1.25rem;

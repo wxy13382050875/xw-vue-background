@@ -8,6 +8,9 @@
       </div>
       <app-main />
     </div>
+    <right-panel v-if="showSettings">
+      <settings />
+    </right-panel>
   </div>
 </template>
 
