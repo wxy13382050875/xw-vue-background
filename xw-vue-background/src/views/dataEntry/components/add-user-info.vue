@@ -4,153 +4,156 @@
       <div class="title">基本信息</div>
       <div style="display: flex;justify-content: space-between;">
         <div class="user-info-edit">
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="姓名" label-width="120px">
-                <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-              </el-form-item>
-              
-              <el-form-item label="姓别" label-width="120px">
-                <el-col :span="24">
-                  <el-select v-model="form.region" placeholder="请选择性别" style="width: 250px;">
+          <el-form ref="form" :model="form" label-width="130px">
+            <el-row :gutter="20">
+              <el-col :span="8">
+                <el-form-item label="姓名"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="姓别">
+                  <el-select v-model="form.region" placeholder="请选择性别" style="width: 100%;">
                     <el-option label="男" value="shanghai" />
                     <el-option label="女" value="beijing" />
                   </el-select>
-                </el-col>
-              </el-form-item>
-              <el-form-item label="出生日期" label-width="120px">
-                <el-col :span="24"><el-date-picker v-model="form.date1" type="date" placeholder="选择日期" style="width: 250px;" /></el-col>
-              </el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="民族" label-width="120px">
-                <el-col :span="24">
-                  <el-select v-model="form.region" placeholder="请选择性别" style="width: 250px;">
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="出生日期"><el-date-picker v-model="form.date1" type="date" placeholder="选择日期" style="width: 100%;" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="民族">
+                  <el-select v-model="form.region" placeholder="请选择性别" style="width: 100%;">
                     <el-option label="汉" value="shanghai" />
                     <el-option label="满" value="beijing" />
                   </el-select>
-                </el-col>
-              </el-form-item>
-              <el-form-item label="籍贯" label-width="120px">
-                <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-              </el-form-item>
-              <el-form-item label="出生地" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="婚姻状况" label-width="120px">
-                <el-select v-model="form.region" placeholder="请选择婚姻状况" style="width: 250px;">
-                  <el-option label="未婚" value="shanghai" />
-                  <el-option label="已婚" value="beijing" />
-                </el-select>
-              </el-form-item>
-              <el-form-item inline="true" label="文化程序" label-width="120px">
-                <el-select v-model="form.region" placeholder="请选择文化程序" style="width: 250px;">
-                  <el-option label="初中" value="shanghai" />
-                  <el-option label="高中" value="beijing" />
-                  <el-option label="本科" value="shanghai" />
-                  <el-option label="专科" value="beijing" />
-                  <el-option label="研究生" value="shanghai" />
-                  <el-option label="硕士" value="beijing" />
-                </el-select>
-              </el-form-item>
-              <el-form-item inline="true" label="政治面貌" label-width="120px">
-                <el-select v-model="form.region" placeholder="请选择政治面貌" style="width: 250px;">
-                  <el-option label="党员" value="shanghai" />
-                  <el-option label="团员" value="beijing" />
-                  <el-option label="无" value="shanghai" />
-                </el-select>
-              </el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="入党时间" label-width="120px">
-                <el-col :span="24"><el-date-picker v-model="form.date1" type="date" placeholder="选择入党时间" style="width: 250px;" /></el-col>
-              </el-form-item>
-              <el-form-item label="参加工作时间" label-width="120px">
-                <el-col :span="24"><el-date-picker v-model="form.date1" type="date" placeholder="选择参加工作时间" style="width: 250px;" /></el-col>
-              </el-form-item>
-              <el-form-item label="单位" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="单位性质" label-width="120px">
-                <el-select v-model="form.region" placeholder="请选择单位性质" style="width: 250px;">
-                  <el-option label="政府" value="shanghai" />
-                  <el-option label="企事业单位" value="beijing" />
-                </el-select>
-              </el-form-item>
-              <el-form-item label="职务" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-              <el-form-item label="级别" label-width="120px">
-                <el-select v-model="form.region" placeholder="请选择级别" style="width: 250px;">
-                  <el-option label="正厅级" value="shanghai" />
-                  <el-option label="正科级" value="beijing" />
-                </el-select>
-              </el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="职称" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-              <el-form-item label="分管工作" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-              <el-form-item label="任职时间" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="全日制学历" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-              <el-form-item label="全日制毕业院校系及专业" label-width="120px"><el-input v-model="form.name" style="width: 635px;" /></el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="在职学历学位" label-width="120px"><el-input v-model="form.name" style="width: 250px;" /></el-form-item>
-              <el-form-item label="在职毕业院校系及专业" label-width="120px"><el-input v-model="form.name" style="width: 635px;" /></el-form-item>
-            </el-form>
-          </div>
-          <div class="edit-info-item">
-            <el-form ref="form" inline="true" :model="form">
-              <el-form-item label="状态" label-width="120px">
-                <el-select v-model="form.region" placeholder="请选择状态" style="width: 250px;">
-                  <el-option label="在职" value="shanghai" />
-                  <el-option label="离职" value="beijing" />
-                </el-select>
-              </el-form-item>
-            </el-form>
-          </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="籍贯"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="出生地"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="婚姻状况">
+                  <el-select v-model="form.region" placeholder="请选择婚姻状况" style="width: 100%;">
+                    <el-option label="未婚" value="shanghai" />
+                    <el-option label="已婚" value="beijing" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item inline="true" label="文化程序">
+                  <el-select v-model="form.region" placeholder="请选择文化程序" style="width: 100%;">
+                    <el-option label="初中" value="shanghai" />
+                    <el-option label="高中" value="beijing" />
+                    <el-option label="本科" value="shanghai" />
+                    <el-option label="专科" value="beijing" />
+                    <el-option label="研究生" value="shanghai" />
+                    <el-option label="硕士" value="beijing" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item inline="true" label="政治面貌">
+                  <el-select v-model="form.region" placeholder="请选择政治面貌" style="width: 100%;">
+                    <el-option label="党员" value="shanghai" />
+                    <el-option label="团员" value="beijing" />
+                    <el-option label="无" value="shanghai" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="入党时间"><el-date-picker v-model="form.date1" type="date" placeholder="选择入党时间" style="width: 100%;" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="参加工作时间"><el-date-picker v-model="form.date1" type="date" placeholder="选择参加工作时间" style="width: 100%;" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="单位"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="单位性质">
+                  <el-select v-model="form.region" placeholder="请选择单位性质" style="width: 100%;">
+                    <el-option label="政府" value="shanghai" />
+                    <el-option label="企事业单位" value="beijing" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="职务"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="级别">
+                  <el-select v-model="form.region" placeholder="请选择级别" style="width: 100%;">
+                    <el-option label="正厅级" value="shanghai" />
+                    <el-option label="正科级" value="beijing" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="职称"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="分管工作"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="任职时间"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="全日制学历"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="16">
+                <el-form-item label="全日制毕业院校系及专业"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="在职学历学位"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="16">
+                <el-form-item label="在职毕业院校系及专业"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="状态">
+                  <el-select v-model="form.region" placeholder="请选择状态" style="width: 100%;">
+                    <el-option label="在职" value="shanghai" />
+                    <el-option label="离职" value="beijing" />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
         </div>
         <div class="edit-picture-upload">
-          <el-upload
-            class="avatar-uploader"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload"
-          >
-            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-            <i v-else class="el-icon-plus avatar-uploader-icon" />
-          </el-upload>
+          <div>
+            <el-upload
+              class="avatar-uploader"
+              action="https://jsonplaceholder.typicode.com/posts/"
+              :show-file-list="false"
+              :on-success="handleAvatarSuccess"
+              :before-upload="beforeAvatarUpload"
+            >
+              <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+              <i v-else class="el-icon-plus avatar-uploader-icon" />
+            </el-upload>
+          </div>
         </div>
       </div>
 
       <div class="user-info-employment">
+        
         <el-form ref="inServForm" :model="inServForm" label-width="130px" size="small">
+
           <el-form-item label="主要任职情况" prop="servin" label-width="120px">
             <template>
               <el-table border :data="infiledList" style="margin-right: 1.875rem;">
                 <el-table-column prop="startTime" label="起始时间" style="width:6vw;">
                   <template scope="scope">
-                    <el-col :span="24"><el-date-picker v-model="form.date1" type="date" placeholder="选择开始时间" style="width: 100%;" /></el-col>
+                    <el-date-picker v-model="form.date1" type="date" placeholder="选择开始时间" style="width: 100%;" />
                   </template>
                 </el-table-column>
                 <el-table-column prop="endTime" label="终止时间">
                   <template scope="scope">
-                    <el-col :span="24"><el-date-picker v-model="form.date1" type="date" placeholder="选择结束时间" style="width: 100%;" /></el-col>
+                    <el-date-picker v-model="form.date1" type="date" placeholder="选择结束时间" style="width: 100%;" />
                   </template>
                 </el-table-column>
                 <el-table-column prop="unit" label="所在单位">
@@ -173,6 +176,7 @@
             </template>
           </el-form-item>
         </el-form>
+        
       </div>
       <div class="user-info-family">
         <el-form ref="inServForm" :model="inServForm" label-width="130px" size="small">
@@ -276,36 +280,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.user-info-content {
-  margin: 3.25rem;
-  border-radius: 5px;
-  border: 1px solid #1f5193;
-  background-color: #e0e8ee;
-  .title {
-    background-color: #1f5193;
-    text-align: center;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    color: #ffffff;
-  }
-  .user-info-edit {
+  .user-info-content {
+    margin: 1.25rem;
+    border-radius: 5px;
+    border: 1px solid #1f5193;
     background-color: #e0e8ee;
-    margin-top: 0.625rem;
+    margin-bottom: 3.75rem;
+    .title {
+      background-color: #1f5193;
+      text-align: center;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      color: #ffffff;
+    }
+    .user-info-edit {
+      background-color: #e0e8ee;
+      margin-top: 0.625rem;
+      .edit-info-item{
+        padding: 0.625rem;
+      }
+    }
+    .edit-picture-upload {
+      background-color: #ffffff;
+      width: 6.25rem;
+      height: 9.375rem;
+      text-align: center;
+      margin: 0.625rem;
+    }
+    .user-info-employment {
+      margin-right: 1.875rem;
+    }
+    .user-info-family {
+      margin-right: 1.875rem;
+    }
   }
-  .edit-picture-upload {
-    background-color: #ffffff;
-    width: 6.25rem;
-    height: 9.375rem;
-    margin-right: 3.125rem;
-    margin-top: 0.625rem;
+  .wf-bottom {
   }
-  .user-info-employment {
-    margin-right: 1.875rem;
-  }
-  .user-info-family {
-    margin-right: 1.875rem;
-  }
-}
+
+
+
 .user-info-bottom {
   position: fixed;
   bottom: 0;

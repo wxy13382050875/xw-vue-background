@@ -2,81 +2,55 @@
   <div class="dashboard-editor-container">
     <div>
       <span>单位：</span>
-      <el-select v-model="value" placeholder="请选择">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
+      <el-select v-model="value" placeholder="请选择"><el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option></el-select>
     </div>
 
-    <el-row :gutter="32">
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <PunishmentChart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <PetitionLetterChart />
-        </div>
-      </el-col>
-
-    </el-row>
-    <el-row :gutter="32">
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <TalkNumberChart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <TalkVarietyChart />
-        </div>
-      </el-col>
-
-    </el-row>
-    <el-row :gutter="32">
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <AgeSectionChart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <AssessmentGradesChart />
-        </div>
-      </el-col>
-
-    </el-row>
-    <el-row :gutter="32">
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <PunishmentSituationChart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="12">
-        <div class="chart-wrapper">
-          <JobGradeChart />
-        </div>
-      </el-col>
-
-    </el-row>
-
+    <div>
+      <el-row :gutter="32">
+        <el-col :span="12">
+          <div class="chart-wrapper"><PunishmentChart /></div>
+        </el-col>
+        <el-col :span="12">
+          <div class="chart-wrapper"><PetitionLetterChart /></div>
+        </el-col>
+      </el-row>
+      <el-row :gutter="32">
+        <el-col :span="12">
+          <div class="chart-wrapper"><TalkNumberChart /></div>
+        </el-col>
+        <el-col :span="12">
+          <div class="chart-wrapper"><TalkVarietyChart /></div>
+        </el-col>
+      </el-row>
+      <el-row :gutter="32">
+        <el-col :span="12">
+          <div class="chart-wrapper"><AgeSectionChart /></div>
+        </el-col>
+        <el-col :span="12">
+          <div class="chart-wrapper"><AssessmentGradesChart /></div>
+        </el-col>
+      </el-row>
+      <el-row :gutter="32">
+        <el-col :span="12">
+          <div class="chart-wrapper"><PunishmentSituationChart /></div>
+        </el-col>
+        <el-col :span="12">
+          <div class="chart-wrapper"><JobGradeChart /></div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
 <script>
-import PunishmentChart from './components/PunishmentChart.vue'
-import PetitionLetterChart from './components/PetitionLetterChart'
-import AgeSectionChart from './components/AgeSectionChart'
-import AssessmentGradesChart from './components/AssessmentGradesChart'
-import PunishmentSituationChart from './components/PunishmentSituationChart'
-import JobGradeChart from './components/JobGradeChart'
-import TalkNumberChart from './components/TalkNumberChart'
-import TalkVarietyChart from './components/TalkVarietyChart'
+import PunishmentChart from './components/PunishmentChart.vue';
+import PetitionLetterChart from './components/PetitionLetterChart';
+import AgeSectionChart from './components/AgeSectionChart';
+import AssessmentGradesChart from './components/AssessmentGradesChart';
+import PunishmentSituationChart from './components/PunishmentSituationChart';
+import JobGradeChart from './components/JobGradeChart';
+import TalkNumberChart from './components/TalkNumberChart';
+import TalkVarietyChart from './components/TalkVarietyChart';
 // import BoxCard from './components/BoxCard'
 
 // const lineChartData = {
@@ -112,40 +86,46 @@ export default {
   },
   data() {
     return {
-      options: [{
+      options: [
+        {
           value: '选项1',
           label: '黄金糕'
-        }, {
+        },
+        {
           value: '选项2',
           label: '双皮奶'
-        }, {
+        },
+        {
           value: '选项3',
           label: '蚵仔煎'
-        }, {
+        },
+        {
           value: '选项4',
           label: '龙须面'
-        }, {
+        },
+        {
           value: '选项5',
           label: '北京烤鸭'
-        }],
-        value: ''
-      }
-    },
+        }
+      ],
+      value: ''
+    };
+  },
 
   methods: {
     // handleSetLineChartData(type) {
     //   this.lineChartData = lineChartData[type]
     // }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .dashboard-editor-container {
   padding: 32px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: relative;
-
+  width: 100%;
   .github-corner {
     position: absolute;
     top: 0px;
@@ -160,7 +140,7 @@ export default {
   }
 }
 
-@media (max-width:1024px) {
+@media (max-width: 1024px) {
   .chart-wrapper {
     padding: 8px;
   }

@@ -4,70 +4,65 @@
       <div class="title">领导干部操办婚丧喜庆事宜情况登记表</div>
       <div class="weddings-funerals-edit">
         <div class="edit-wf-item">
-          <el-form ref="form" inline="true" :model="form">
-
-            <el-form-item label="工作单位及职务" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-            </el-form-item>
-            <el-form-item label="办理事项" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 665px;" /></el-col>
-            </el-form-item>
-          </el-form>
-        </div>
-        <div class="edit-wf-item">
-          <el-form ref="form" inline="true" :model="form">
-            <el-form-item label="办理时间" label-width="150px">
-              <el-col :span="24"><el-date-picker v-model="form.date1" type="date" placeholder="选择办理日期" style="width: 250px;" /></el-col>
-            </el-form-item>
-            <el-form-item label="办理地点" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-            </el-form-item>
-            <el-form-item label="车辆使用量" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-            </el-form-item>
-          </el-form>
-        </div>
-        <div class="edit-wf-item">
-          <el-form ref="form" inline="true" :model="form">
-            <el-form-item label="车辆来源" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-            </el-form-item>
-            <el-form-item label="是否合办" label-width="150px">
-              <el-col :span="24" style="width: 250px;">
-                <el-radio v-model="radio" label="1">是</el-radio>
-                <el-radio v-model="radio" label="2">否</el-radio>
+          <el-form ref="form" :model="form" label-width="130px">
+            <el-row :gutter="20">
+              <el-col :span="8">
+                <el-form-item label="工作单位及职务"><el-input v-model="form.name" /></el-form-item>
               </el-col>
-            </el-form-item>
-            <el-form-item label="实际桌数" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-            </el-form-item>
-          </el-form>
-        </div>
-        <div class="edit-wf-item">
-          <el-form ref="form" inline="true" :model="form">
-            <el-form-item label="宴席标准" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 150px;" /> 元桌（含酒水）</el-col>
-            </el-form-item>
-            <el-form-item label="亲属人数" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-            </el-form-item>
-            <el-form-item label="非亲属人数" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 250px;" /></el-col>
-            </el-form-item>
-          </el-form>
-        </div>
-        <div class="edit-wf-item">
-          <el-form ref="form" inline="true" :model="form">
-            <el-form-item label="其他需要报告内容" label-width="150px">
-              <el-col :span="24"><el-input v-model="form.name" style="width: 1080px;" /></el-col>
-            </el-form-item>
+              <el-col :span="16">
+                <el-form-item label="办理事项"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+
+              <el-col :span="8">
+                <el-form-item label="办理时间">
+                  <el-date-picker v-model="form.date1" type="date" placeholder="选择办理日期" style="width: 100%;" />
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="办理地点"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="车辆使用量"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="车辆来源"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="是否合办">
+                  <el-radio v-model="radio" label="1">是</el-radio>
+                  <el-radio v-model="radio" label="2">否</el-radio>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="8">
+                <el-form-item label="实际桌数"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="宴席标准">
+                  <el-col :span="14">
+                  <el-input v-model="form.name" />
+                  </el-col>
+                  <el-col :span="10">
+                  元桌（含酒水）
+                  </el-col>
+
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="亲属人数"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="非亲属人数"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+              <el-col :span="24">
+                <el-form-item label="其他需要报告内容"><el-input v-model="form.name" /></el-form-item>
+              </el-col>
+            </el-row>
           </el-form>
         </div>
       </div>
     </div>
-    <div class="wf-bottom" style="width: 100%; text-align:center">
-      <el-button type="primary" @click="onSubmit" style="">添加</el-button>
-    </div>
+    <div class="wf-bottom" style="width: 100%; text-align:center"><el-button type="primary" @click="onSubmit" style="">添加</el-button></div>
   </div>
 </template>
 
@@ -87,7 +82,7 @@ export default {
         resource: '',
         desc: ''
       },
-      radio: '1',
+      radio: '1'
     };
   },
 
@@ -111,9 +106,11 @@ export default {
   .weddings-funerals-edit {
     background-color: #e0e8ee;
     margin-top: 0.625rem;
+    .edit-wf-item{
+      padding: 0.625rem;
+    }
   }
 }
-.wf-bottom{
-
+.wf-bottom {
 }
 </style>

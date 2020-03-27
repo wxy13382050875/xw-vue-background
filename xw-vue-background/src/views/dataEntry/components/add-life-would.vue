@@ -1,11 +1,10 @@
 <template>
   <div class="reporting-activities-container">
-    
     <div class="ra-content">
       <div class="title">领导干部参加民主（组织）生活对照检查材料</div>
       <div class="edit-ra-item">
         <el-form ref="form" inline="true" :model="form">
-          <el-form-item label="附件" label-width="100px">
+          <el-form-item label="附件">
             <el-upload
               class="upload-file"
               action="https://jsonplaceholder.typicode.com/posts/"
@@ -79,7 +78,7 @@ export default {
     line-height: 2.5rem;
     color: #ffffff;
   }
-  .edit-ra-item{
+  .edit-ra-item {
     // margin-top: 0.625rem;
     margin-bottom: 0.625rem;
   }

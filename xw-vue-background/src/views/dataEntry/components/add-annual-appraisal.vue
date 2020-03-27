@@ -1,5 +1,5 @@
 <template>
-  <div class="annual-appraisal-container">
+  <div class="annual-appraisal-container" >
     <div class="annual-appraisal-content">
       <div class="title">领导干部年度考核及获奖情况登记表</div>
       <div class="assessment-edit">

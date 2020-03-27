@@ -109,13 +109,13 @@ export const constantRoutes = [{
       path: 'index',
       name: 'rightTab',
       component: () => import('@/views/dataEntry/components/index'),
+      redirect:'/dataEntry/components/index/add-user-info',
       meta: {
-        title: '111基本信息',
+        title: '',
         icon: 'form'
       },
       children: [{
           path: 'add-user-info',
-          component: Layout,
           hidden: true,
           name: 'add-user-info',
           component: () => import('@/views/dataEntry/components/add-user-info'),
@@ -126,7 +126,6 @@ export const constantRoutes = [{
         },
         {
           path: 'add-weddings-funerals',
-          component: Layout,
           hidden: true,
           name: 'add-weddings-funerals',
           component: () => import('@/views/dataEntry/components/add-weddings-funerals'),

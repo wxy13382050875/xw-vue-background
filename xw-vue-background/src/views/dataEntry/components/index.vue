@@ -21,17 +21,18 @@ export default {
   name: 'AppMain',
   computed: {
     key() {
-      return this.$route.path;
+      return this.$route.path
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .div-container {
-  display: flex;
+  display: -webkit-box;
   flex: 1;
   width: 100%;
+
   .sider-bar {
     display: flex;
     align-items: center;
