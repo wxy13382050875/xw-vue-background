@@ -1,0 +1,38 @@
+.el-table--border th,
+.el-table__fixed-right-patch {
+    border-bottom: 1px solid #EBEEF5 !important;
+}
+
+.el-table__body,
+.el-table__footer,
+.el-table__header {
+    border-collapse: collapse;
+}
+
+.el-tabs--border-card>.el-tabs__content {
+    padding: 5px;
+}
+
+.el-tabs__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+
+.el-tab-pane {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.el-cascader-menu__wrap {
+    margin: 0 !important;
+}
+
+.el-scrollbar__wrap {
+    overflow: auto;
+    padding-bottom: 17px;
+}

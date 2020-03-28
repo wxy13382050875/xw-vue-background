@@ -1,0 +1,128 @@
+{
+  "id": "1624694",
+  "name": "gdPolitEco",
+  "font_family": "icon",
+  "css_prefix_text": "_",
+  "description": "官渡区“政治生态”信息系统",
+  "glyphs": [
+    {
+      "icon_id": "2808087",
+      "name": "选中",
+      "font_class": "checked",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "1349056",
+      "name": "退出",
+      "font_class": "exit",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "4901784",
+      "name": "详情",
+      "font_class": "info",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    },
+    {
+      "icon_id": "4571902",
+      "name": "新增",
+      "font_class": "addPolit",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "5108164",
+      "name": "密码",
+      "font_class": "pwd",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "12349403",
+      "name": "回收站",
+      "font_class": "recycle",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "1264",
+      "name": "编辑",
+      "font_class": "edit",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "843328",
+      "name": "新增",
+      "font_class": "add",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    },
+    {
+      "icon_id": "3593736",
+      "name": "删除筛选项",
+      "font_class": "del",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "5677882",
+      "name": "个人中心 _选中",
+      "font_class": "person",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "546143",
+      "name": "表格",
+      "font_class": "table",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "1831138",
+      "name": "导入",
+      "font_class": "import",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "3714602",
+      "name": "用户管理",
+      "font_class": "users",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "3810086",
+      "name": "导出 copy",
+      "font_class": "export",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "5488412",
+      "name": "部门管理",
+      "font_class": "dept",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "5501556",
+      "name": "首页-选中",
+      "font_class": "home",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "12877522",
+      "name": "统计",
+      "font_class": "stat",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}

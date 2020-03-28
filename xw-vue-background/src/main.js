@@ -15,6 +15,12 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+// 引入dog2框架逻辑
+import '@/assets/dog2js/index.js'
+// 引入框架级UI库
+import dog2ui from '@/assets/dog2ui/index.js'
+Vue.use(dog2ui)
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
