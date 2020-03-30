@@ -32,16 +32,18 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [{
     path: '/login',
-    name: 'login',
     component: () => import('@/views/login/index'),
     hidden: true
   },
 
-
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  },
 
   {
     path: '/',
-    name: 'home',
     component: Layout,
     redirect: '/charts',
     children: [{
@@ -107,7 +109,7 @@ export const constantRoutes = [{
       path: 'index',
       name: 'rightTab',
       component: () => import('@/views/dataEntry/components/index'),
-      redirect: '/dataEntry/components/index/add-user-info',
+      redirect:'/dataEntry/components/index/add-user-info',
       meta: {
         title: '',
         icon: 'form'

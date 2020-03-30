@@ -9,8 +9,7 @@
               <el-col :span="8">
                 <el-form-item label="谈话种类">
                   <el-select v-model="form.region" placeholder="请选择谈话种类" style="width: 100%;">
-                    <el-option label="111" value="shanghai" />
-                    <el-option label="222" value="beijing" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('WorkingStateType')" :key="i" :value="o.value" :label="o.label"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -46,10 +45,7 @@
           </el-form>
         </div>
 
-        <div class="edit-wf-item"><el-form ref="form" inline="true" :model="form"></el-form></div>
-        <div class="edit-qr-item"><el-form ref="form" inline="true" :model="form"></el-form></div>
-        <div class="edit-qr-item"><el-form ref="form" inline="true" :model="form"></el-form></div>
-
+ 
         <div class="update-file-item">
           <el-upload
             class="upload-file"

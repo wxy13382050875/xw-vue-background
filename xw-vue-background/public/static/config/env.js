@@ -21,8 +21,8 @@ var Config = {
 }
 
 let hosts = {
-  "http://localhost:9528 | http://127.0.0.1:7502": {
-    Api: "http://192.168.0.102:16002",
+  "http://localhost:8081 | http://127.0.0.1:7502": {
+    Api: "http://127.0.0.1:17502",
     Socket: "",
     Upload: "http://127.0.0.1:23000",
     Download: "http://127.0.0.1:23001",

@@ -4,23 +4,20 @@ export function login(data) {
   return request({
     url: '/system/sign/login',
     method: 'post',
-    data: data
+    data:data
   })
 }
 
-export function getInfo(token) {
+export function getInfo() {
   return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: {
-      token
-    }
+    url: '/system/config/query',
+    method: 'get'
   })
 }
 
 export function logout() {
   return request({
-    url: '/vue-admin-template/user/logout',
+    url: '/system/sign/logout',
     method: 'post'
   })
 }

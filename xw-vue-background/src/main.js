@@ -41,6 +41,7 @@ Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
 
+Vue.prototype.$w = window
 new Vue({
   el: '#app',
   router,

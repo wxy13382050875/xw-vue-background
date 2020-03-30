@@ -74,16 +74,13 @@ Vue.prototype.$http = http
 let login = (account, pwd, callback, errorCb = function () { }) => {
   http('/system/sign/login', { account: account, pwd: pwd }, true).then(res => {
     let user = res.data
-    
     SetCache('UUID', user.Token)
     SetCache('User', user.User)
     SetCache('Roles', user.Roles)
     SetCache('Auth', user.Auth)
     SetCache('Token', user.Token)
     http('/system/config/query', {}, true).then(res => {
-      
       let cfg = res.data
-      console.log('cfg =' + JSON.stringify(cfg))
       // 写入缓存
       SetCache('Config', cfg)
       // 跳转处理
@@ -107,7 +104,7 @@ let showDialogLoginForPwd = (title) => {
   loginTimeoutFlag = true
   let account = GetCache("User.Account")
   let message = `
-    <div>当前账号：` + account + `</div>
+    <div>当前账号：` + account + `</div> 
     <div>请输入密码，重新激活登录状态</div>
   `
   MessageBox.prompt('', title, {
