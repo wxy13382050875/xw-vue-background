@@ -135,7 +135,8 @@
       </div>
 
       <div class="user-info-employment">
-        <el-form ref="inServForm" :model="PersonJob.PersonJob" label-width="130px" size="small">
+        <employment></employment>
+        <!-- <el-form ref="inServForm"  label-width="130px" size="small">
           <el-form-item label="主要任职情况" prop="servin" label-width="120px">
             <template>
               <el-table border :data="PersonJob" style="margin-right: 1.875rem;">
@@ -168,10 +169,10 @@
               </el-table>
             </template>
           </el-form-item>
-        </el-form>
+        </el-form> -->
       </div>
-      <div class="user-info-family">
-        <el-form ref="inServForm" :model="PersonJob.PersonFamily" label-width="130px" size="small">
+      <!-- <div class="user-info-family">
+        <el-form ref="inServForm" :model="form.PersonFamily" label-width="130px" size="small">
           <el-form-item label="家庭成员情况" prop="servin" label-width="120px">
             <template>
               <el-table border :data="PersonFamily" style="margin-right: 1.875rem;">
@@ -209,7 +210,7 @@
             </template>
           </el-form-item>
         </el-form>
-      </div>
+      </div> -->
     </div>
     <div class="user-info-bottom">
       <div style="margin: 0.625rem">
@@ -223,9 +224,10 @@
 </template>
 
 <script>
+import employment from "@/components/dataEntry/employment.vue";
 export default {
   name: 'Manage',
-  components: {},
+  components: {employment},
   data() {
     return {
       form: {
@@ -295,6 +297,7 @@ export default {
     },
 
     addJobRow(tableData, event) {
+      console.log(tableData);
       tableData.push(event)
     },
     deleteJobRow(index, rows) {
