@@ -16,7 +16,7 @@
         </el-button>
       </el-col>
     </el-row>
-    <br />
+    <br>
     <el-form>
       <el-form-item label="家庭成员情况" prop="servin" label-width="120px">
         <el-table :data="familyList" border style="width: 100%">
@@ -76,8 +76,8 @@ export default {
       familyList: [],
       family: {},
       addFlag: true,
-      curId: ''
-    };
+      row: {}
+    }
   },
   watch: {
     // 2.x版本的bug 以前用1.x发现没有 假如现在是第三页，只有一条数据了。将其删除，就没有第三页了。应该跳到第二页展示出5条数据。
@@ -86,46 +86,29 @@ export default {
   mounted() {},
   methods: {
     handleClose(done) {
-      done();
-    },
-    handleCurrentChange(val) {
-      // this.page = val;
-      // this.getBookList();
+      done()
     },
 
     async saveBook(item) {
-      this.familyList.push(item);
+      this.familyList.push(item)
+      this.dialogVisible = false
     },
     delBook(row) {
-      this.familyList.splice(row, 1); //删除第2个元素
+      this.dialog2Visible = true
+      this.row = row
     },
     async handleDel() {
-      // try {
-      //   let res = await axios.post(
-      //     "http://127.0.0.1:8848/api/v1/book/del",
-      //     qs.stringify({
-      //       id: this.curId
-      //     })
-      //   );
-      //   this.curId = "";
-      //   this.dialog2Visible = false;
-      //   this.$message({
-      //     message: res.data.Msg,
-      //     type: "success"
-      //   });
-      //   this.getBookList();
-      // } catch (e) {
-      //   console.log(e);
-      // }
+      this.familyList.splice(this.row, 1) // 删除第2个元素
+      this.curId = {}
+      this.dialog2Visible = false
     },
     editBook(row) {
-      arr.splice(row,1,this.family);//把第4个位置的元素替换为null
-      // this.book = row;
-      // this.dialogVisible = true;
-      // this.addFlag = false;
+      this.family = row
+      this.dialogVisible = true
+      this.addFlag = false
     }
   }
-};
+}
 </script>
 
 <style>
