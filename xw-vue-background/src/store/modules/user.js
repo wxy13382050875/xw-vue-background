@@ -1,12 +1,23 @@
-import { login, logout, getInfo } from '@/api/user'
-import { getToken, setToken, removeToken } from '@/utils/auth'
-import { resetRouter } from '@/router'
+import {
+  login,
+  logout,
+  getInfo
+} from '@/api/user'
+import {
+  getToken,
+  setToken,
+  removeToken
+} from '@/utils/auth'
+import {
+  resetRouter
+} from '@/router'
 
 const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
+    User: {}
   }
 }
 
@@ -24,19 +35,34 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
-  }
+  },
+  SET_USER: (state, User) => {
+    state.User = User
+  },
 }
 
 const actions = {
   // user login
-  login({ commit }, userInfo) {
-    const { username, password } = userInfo
+  login({
+    commit
+  }, userInfo) {
+    const {
+      username,
+      password
+    } = userInfo
     return new Promise((resolve, reject) => {
-      login({ account: username.trim(), pwd: password }).then(response => {
-        const { data } = response
+      login({
+        account: username.trim(),
+        pwd: password
+      }).then(response => {
+        const {
+          data
+        } = response
         commit('SET_TOKEN', data.Token)
         setToken(data.Token)
-		commit('SET_AVATAR', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif')
+        console.log(data.User);
+        commit('SET_USER', data.User)
+        commit('SET_AVATAR', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif')
         resolve()
       }).catch(error => {
         reject(error)
@@ -45,16 +71,24 @@ const actions = {
   },
 
   // get user info
-  getInfo({ commit, state }) {
+  getInfo({
+    commit,
+    state
+  }) {
     return new Promise((resolve, reject) => {
       getInfo().then(response => {
-        const { data } = response
+        const {
+          data
+        } = response
 
         if (!data) {
           reject('Verification failed, please Login again.')
         }
 
-        const { name, avatar } = data
+        const {
+          name,
+          avatar
+        } = data
 
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
@@ -66,9 +100,13 @@ const actions = {
   },
 
   // user logout
-  logout({ commit, state }) {
+  logout({
+    commit,
+    state
+  }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
+      logout().then(response => {
+        console.log(response);
         removeToken() // must remove  token  first
         resetRouter()
         commit('RESET_STATE')
@@ -80,7 +118,9 @@ const actions = {
   },
 
   // remove token
-  resetToken({ commit }) {
+  resetToken({
+    commit
+  }) {
     return new Promise(resolve => {
       removeToken() // must remove  token  first
       commit('RESET_STATE')
