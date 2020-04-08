@@ -17,7 +17,10 @@ const getDefaultState = () => {
     token: getToken(),
     name: '',
     avatar: '',
-    User: {}
+    User: {},
+    Roles: [],
+    Config:{},
+    Auth:[],
   }
 }
 
@@ -39,8 +42,17 @@ const mutations = {
   SET_USER: (state, User) => {
     state.User = User
   },
-}
+  SET_ROLES: (state, Roles) => {
+    state.Roles = Roles
+  },
+  SET_CONFIG: (state, Config) => {
+    state.Config = Config
+  },
+  SET_AUTH: (state, Auth) => {
+    state.Auth = Auth
+  },
 
+}
 const actions = {
   // user login
   login({
@@ -58,10 +70,12 @@ const actions = {
         const {
           data
         } = response
-        commit('SET_TOKEN', data.Token)
         setToken(data.Token)
-        console.log(data.User);
+
+        commit('SET_TOKEN', data.Token)
         commit('SET_USER', data.User)
+        commit('SET_ROLES', data.User)
+        commit('SET_AUTH', data.Auth)
         commit('SET_AVATAR', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif')
         resolve()
       }).catch(error => {
@@ -85,13 +99,9 @@ const actions = {
           reject('Verification failed, please Login again.')
         }
 
-        const {
-          name,
-          avatar
-        } = data
 
-        commit('SET_NAME', name)
-        commit('SET_AVATAR', avatar)
+
+        commit('SET_CONFIG', response.data)
         resolve(data)
       }).catch(error => {
         reject(error)
@@ -106,7 +116,6 @@ const actions = {
   }) {
     return new Promise((resolve, reject) => {
       logout().then(response => {
-        console.log(response);
         removeToken() // must remove  token  first
         resetRouter()
         commit('RESET_STATE')

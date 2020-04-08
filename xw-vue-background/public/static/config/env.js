@@ -21,8 +21,8 @@ var Config = {
 }
 
 let hosts = {
-  "http://localhost:8081 | http://127.0.0.1:7502": {
-    Api: "http://127.0.0.1:17502",
+  "http://localhost:9528 | http://127.0.0.1:9528": {
+    Api: "http://ynseego.com:16002",
     Socket: "",
     Upload: "http://127.0.0.1:23000",
     Download: "http://127.0.0.1:23001",
@@ -30,8 +30,8 @@ let hosts = {
     Front: "http://127.0.0.1:7502",
     IsDebug: true,
   },
-  "http://ydmx.vip:7502 | http://www.ydmx.vip:7502": {
-    Api: "http://ydmx.vip:17502",
+  "http://ydmx.vip:9528 | http://www.ydmx.vip:9528": {
+    Api: "http://ynseego.com:16002",
     Socket: "",
     Upload: "http://ydmx.vip:23000",
     Download: "http://ydmx.vip:23001",

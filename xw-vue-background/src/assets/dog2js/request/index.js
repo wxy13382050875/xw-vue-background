@@ -104,7 +104,7 @@ let showDialogLoginForPwd = (title) => {
   loginTimeoutFlag = true
   let account = GetCache("User.Account")
   let message = `
-    <div>当前账号：` + account + `</div> 
+    <div>当前账号：` + account + `</div>
     <div>请输入密码，重新激活登录状态</div>
   `
   MessageBox.prompt('', title, {

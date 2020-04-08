@@ -36,6 +36,9 @@ export default {
     fixedHeader() {
       return this.$store.state.settings.fixedHeader
     },
+	showSettings(){
+		return this.$store.state.settings.showSettings
+	},
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,

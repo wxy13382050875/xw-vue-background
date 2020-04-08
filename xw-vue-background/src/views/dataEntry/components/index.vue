@@ -11,6 +11,11 @@
         <div class="right-item"><router-link to="/dataEntry/components/index/add-departure-transfer">离职交接</router-link></div>
         <div class="right-item"><router-link to="/dataEntry/components/index/add-reporting-activities">述职述廉，民主测评</router-link></div>
         <div class="right-item"><router-link to="/dataEntry/components/index/add-life-would">生活会对照检查</router-link></div>
+        <div class="right-item"><router-link to="/dataEntry/components/index/add-petitio-letter">信访举报</router-link></div>
+        <div class="right-item"><router-link to="/dataEntry/components/index/add-disciplinary-action">问责处理、党政纪处分</router-link></div>
+       <div class="right-item"><router-link to="/dataEntry/components/index/add-daily-supervision">日常监督</router-link></div>
+        <div class="right-item"><router-link to="/dataEntry/components/index/add-other-Integrity">其他</router-link></div>
+        <div class="right-item"><router-link to="/dataEntry/components/index/add-party-Integrity">党风兼政意见</router-link></div>
       </div>
     </div>
   </div>
@@ -21,10 +26,10 @@ export default {
   name: 'AppMain',
   computed: {
     key() {
-      return this.$route.path
+      return this.$route.path;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -23,7 +23,6 @@
         </el-form>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -33,37 +32,25 @@ export default {
   components: {},
   data() {
     return {
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
-      radio: '1',
-      //  fileList:[]: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
-      fileList: []
-    };
+      Files: ''
+    }
   },
 
   methods: {
     handleRemove(file, fileList) {
-      console.log(file, fileList);
+      console.log(file, fileList)
     },
     handlePreview(file) {
-      console.log(file);
+      this.Files = URL.createObjectURL(file.raw)
     },
     handleExceed(files, fileList) {
-      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
     },
     beforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${file.name}？`);
+      return this.$confirm(`确定移除 ${file.name}？`)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -79,7 +66,7 @@ export default {
     line-height: 2.5rem;
     color: #ffffff;
   }
-  .edit-ra-item{
+  .edit-ra-item {
     // margin-top: 0.625rem;
     margin-bottom: 0.625rem;
   }

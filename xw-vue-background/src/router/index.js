@@ -35,7 +35,6 @@ export const constantRoutes = [{
     component: () => import('@/views/login/index'),
     hidden: true
   },
-
   {
     path: '/404',
     component: () => import('@/views/404'),
@@ -44,6 +43,7 @@ export const constantRoutes = [{
 
   {
     path: '/',
+    name:'charts',
     component: Layout,
     redirect: '/charts',
     children: [{
@@ -109,7 +109,7 @@ export const constantRoutes = [{
       path: 'index',
       name: 'rightTab',
       component: () => import('@/views/dataEntry/components/index'),
-      redirect:'/dataEntry/components/index/add-user-info',
+      redirect: '/dataEntry/components/index/add-user-info',
       meta: {
         title: '',
         icon: 'form'
@@ -193,7 +193,58 @@ export const constantRoutes = [{
             title: '生活会对照检查',
             icon: 'form'
           }
-        }
+        },
+        {
+          path: 'add-petitio-letter',
+          hidden: true,
+          name: 'add-petitio-letter',
+          component: () => import('@/views/dataEntry/components/add-petitio-letter'),
+          meta: {
+            title: '信访举报',
+            icon: 'form'
+          }
+        },
+        {
+          path: 'add-disciplinary-action',
+          hidden: true,
+          name: 'add-disciplinary-action',
+          component: () => import('@/views/dataEntry/components/add-disciplinary-action'),
+          meta: {
+            title: '问责处理、党政纪处分',
+            icon: 'form'
+          }
+        },
+        {
+          path: 'add-daily-supervision',
+          hidden: true,
+          name: 'add-daily-supervision',
+          component: () => import('@/views/dataEntry/components/add-daily-supervision'),
+          meta: {
+            title: '日常监督',
+            icon: 'form'
+          }
+        },
+{
+          path: 'add-other-Integrity',
+          hidden: true,
+          name: 'add-other-Integrity',
+          component: () => import('@/views/dataEntry/components/add-other-Integrity'),
+          meta: {
+            title: '其他',
+            icon: 'form'
+          }
+        },
+{
+          path: 'add-party-Integrity',
+          hidden: true,
+          name: 'add-party-Integrity',
+          component: () => import('@/views/dataEntry/components/add-party-Integrity'),
+          meta: {
+            title: '党风廉政意见',
+            icon: 'form'
+          }
+        },
+
       ]
     }]
   },

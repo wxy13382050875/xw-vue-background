@@ -19,5 +19,6 @@ export function logout() {
   return request({
     url: '/system/sign/logout',
     method: 'post',
+    data:{}
   })
 }

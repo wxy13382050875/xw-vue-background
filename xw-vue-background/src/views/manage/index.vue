@@ -28,7 +28,7 @@
             </el-col>
             <el-col :span="6">
               <el-form-item label="处理(处分)类型">
-                <el-select v-model="form.Punish" placeholder="请选择处理(处分)类型" style="width: 100%;">
+                <el-select v-model="form.Punish" multiple placeholder="请选择处理(处分)类型" style="width: 100%;">
                   <el-option v-for="(o, i) in $w.GetEnumArr('PunishmentType')" :key="i" :value="o.value" :label="o.label" />
                 </el-select>
               </el-form-item>
