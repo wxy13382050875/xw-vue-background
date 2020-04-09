@@ -19,7 +19,12 @@ import '@/permission' // permission control
 import '@/assets/dog2js/index.js'
 // 引入框架级UI库
 import dog2ui from '@/assets/dog2ui/index.js'
+
 Vue.use(dog2ui)
+
+// 正整数和浮点数输入自定义指令
+import floatNumber from '@/assets/floatNumber'
+Vue.use(floatNumber)
 
 /**
  * If you don't want to use mock-server
@@ -42,6 +47,9 @@ Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false
 
 Vue.prototype.$w = window
+
+
+
 new Vue({
   el: '#app',
   router,

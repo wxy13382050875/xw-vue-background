@@ -258,7 +258,7 @@ export default {
         PolitOutlook: '',
         JoinTime: '',
         JobTime: '',
-        DeptId: 3,
+        DeptId: null,
         DeptProp: '',
         Job: '',
         JobLevel: '',
@@ -270,7 +270,7 @@ export default {
         JobEduLevel: '',
         JobEduCollege: '',
         JobStatus: '',
-        File: '',
+        File: null,
         PersonJob: [
           {
             StartTime: '',
