@@ -50,12 +50,12 @@
       <el-table :data="dataSource" border style="width: 100%">
         <el-table-column fixed prop="PersonId" align="center" label="序号" width="150" />
         <el-table-column prop="Name" align="center" label="姓名" width="120" />
-        <el-table-column prop="Gender" align="center" label="性别" width="120" />
+        <el-table-column prop="GenderTitle" align="center" label="性别" width="120" />
         <el-table-column prop="Job" align="center" label="职务" width="120" />
-        <el-table-column prop="JobLevel" align="center" label="级别" width="300" />
-        <el-table-column prop="PolitOutlook" align="center" label="政治面貌" width="120" />
-        <el-table-column prop="zip" align="center" label="影响期限" width="220" />
-        <el-table-column prop="JobStatus" align="center" label="状态" width="220" />
+        <el-table-column prop="JobLevelTitle" align="center" label="级别" width="300" />
+        <el-table-column prop="PolitOutlookTitle" align="center" label="政治面貌" width="120" />
+        <el-table-column prop="PunishTermTitle" align="center" label="影响期限" width="220" />
+        <el-table-column prop="JobStatusTitle" align="center" label="状态" width="220" />
         <el-table-column fixed="right" align="center" label="操作">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click="handleClick(scope.row)">查看</el-button>
@@ -105,8 +105,13 @@ export default {
       console.log(this.form);
       getPerArchiversList(this.form).then(response => {
         this.dataSource = response.data.list;
-        // this.total = response.data.total
-        // Just to simulate the time of the request
+        this.dataSource.forEach((item, index) => {
+          item.GenderTitle = this.$w.GetEnumTitleByKey('Gender', item.Gender);
+          item.JobLevelTitle = this.$w.GetEnumTitleByKey('rankType', item.JobLevel);
+          item.PolitOutlookTitle = this.$w.GetEnumTitleByKey('PolitOutlook', item.PolitOutlook);
+          item.JobStatusTitle = this.$w.GetEnumTitleByKey('WorkingStateType', item.JobStatus);
+          item.PunishTermTitle = this.$w.GetEnumTitleByKey('PunishTermType', item.PunishLamp);
+        });
         console.log(this.dataSource);
         setTimeout(() => {
           this.listLoading = false;

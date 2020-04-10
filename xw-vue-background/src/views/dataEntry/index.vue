@@ -2,9 +2,7 @@
   <div class="data-entry-container" style="width: 100%;">
     <div class="data-entry-header">
       <div>
-        <router-link to="/dataEntry/components">
-          <el-button type="primary">新增领导干部</el-button>
-        </router-link>
+        <router-link to="/dataEntry/components/add-user-info"><el-button type="primary">新增领导干部</el-button></router-link>
       </div>
 
       <div>
@@ -18,32 +16,27 @@
     </div>
     <div class="data-entry-body">
       <el-table :data="dataSource" border style="width: 100%">
-
         <el-table-column fixed prop="PersonId" align="center" label="序号" width="150" />
         <el-table-column prop="Name" align="center" label="姓名" width="120" />
         <el-table-column prop="DeptId" align="center" label="单位" width="120" />
         <el-table-column prop="JoinTime" align="center" label="入党时间" width="120" />
         <el-table-column prop="PunishName" align="center" label="处分情况" width="300" />
-        <el-table-column prop="JobStatus" align="center" label="状态" width="220" />
+        <el-table-column prop="JobStatusTitle" align="center" label="状态" width="220" />
         <el-table-column fixed="right" align="center" label="操作">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click="handleDetailClick(scope.row)">详情</el-button>
-            <el-button type="text" size="small" @click="handleChangeClick(scope.row)">修改</el-button>
+            <router-link :to="'/dataEntry/components?PersonId=' + scope.row.PersonId"><el-button type="text" size="small">修改</el-button></router-link>
           </template>
         </el-table-column>
       </el-table>
     </div>
-    <div class="data-entry-pagination">
-      <pagination v-show="total > 0" :total="total" :page.sync="form.page" :limit.sync="form.pagesize" @pagination="getList" />
-    </div>
+    <div class="data-entry-pagination"><pagination v-show="total > 0" :total="total" :page.sync="form.page" :limit.sync="form.pagesize" @pagination="getList" /></div>
   </div>
 </template>
 
 <script>
-import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
-import {
-  getPerArchiversList
-} from '@/api/dataEntry.js'
+import Pagination from '@/components/Pagination'; // Secondary package based on el-pagination
+import { getPerArchiversList } from '@/api/dataEntry.js';
 export default {
   name: 'DataEntry',
   components: {
@@ -64,11 +57,10 @@ export default {
       },
 
       dataSource: []
-
-    }
+    };
   },
   created() {
-    // console.log(getDefaultState());
+    // console.log(this.$w.GetEnumTitleByKey('PolitOutlook','1'))
     this.getList()
   },
   methods: {
@@ -79,41 +71,42 @@ export default {
       console.log(row)
     },
     getList() {
-      this.listLoading = true
-      console.log(this.form)
+      this.listLoading = true;
+      console.log(this.form);
       getPerArchiversList(this.form).then(response => {
-        this.dataSource = response.data.list
-        // this.total = response.data.total
-        // Just to simulate the time ofthe request
-        console.log(this.dataSource)
+        this.dataSource = response.data.list;
+        this.dataSource.forEach((item, index) => {
+          item.JobStatusTitle = this.$w.GetEnumTitleByKey('WorkingStateType', item.JobStatus)
+
+        })
+        console.log(this.dataSource);
         setTimeout(() => {
-          this.listLoading = false
-        }, 1.5 * 1000)
+          this.listLoading = false;
+        }, 1.5 * 1000);
       })
     },
     onQueryClick() {
       this.getList()
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-  .data-entry-header {
-    margin: 1.25rem;
-    display: flex;
-    justify-content: space-between;
+.data-entry-header {
+  margin: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
 
-  }
+.data-entry-body {
+  margin: 1.25rem;
+  border-radius: 5px;
+  border: 1px solid #1f5193;
+  background-color: #e0e8ee;
+}
 
-  .data-entry-body {
-    margin: 1.25rem;
-    border-radius: 5px;
-    border: 1px solid #1f5193;
-    background-color: #e0e8ee;
-  }
-
-  .data-entry-pagination {
-    float: right;
-  }
+.data-entry-pagination {
+  float: right;
+}
 </style>

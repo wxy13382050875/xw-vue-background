@@ -134,7 +134,12 @@ function GetEnumArr(key) {
   }
   return res
 }
+function GetEnumTitleByKey(ArrKey,key){
 
+  let arr = Enum[ArrKey]
+  // console.log(arr[key]);
+  return arr[key]
+}
 function StrCut(str, len) {
   if (str.length <= len) {
     return str
