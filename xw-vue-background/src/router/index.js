@@ -43,7 +43,7 @@ export const constantRoutes = [{
 
   {
     path: '/',
-    name:'charts',
+    name: 'charts',
     component: Layout,
     redirect: '/charts',
     children: [{
@@ -98,6 +98,21 @@ export const constantRoutes = [{
         icon: 'form'
       },
 
+    }]
+  },
+
+  {
+    path: '/dataEntry',
+    component: Layout,
+    hidden: true,
+    children: [{
+      path: 'add-user-info',
+      name: 'add-user-info',
+      component: () => import('@/views/dataEntry/components/add-user-info'),
+      meta: {
+        title: '基本信息',
+        icon: 'form'
+      }
     }]
   },
   {
@@ -224,7 +239,7 @@ export const constantRoutes = [{
             icon: 'form'
           }
         },
-{
+        {
           path: 'add-other-Integrity',
           hidden: true,
           name: 'add-other-Integrity',
@@ -234,7 +249,7 @@ export const constantRoutes = [{
             icon: 'form'
           }
         },
-{
+        {
           path: 'add-party-Integrity',
           hidden: true,
           name: 'add-party-Integrity',

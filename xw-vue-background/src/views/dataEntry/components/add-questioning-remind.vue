@@ -9,7 +9,7 @@
               <el-col :span="8">
                 <el-form-item label="谈话种类">
                   <el-select v-model="dataSource.TalkType" placeholder="请选择谈话种类" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('WorkingStateType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('JobStatus')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>

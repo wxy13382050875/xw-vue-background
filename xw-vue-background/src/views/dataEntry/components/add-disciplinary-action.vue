@@ -31,7 +31,7 @@
               <el-col :span="8">
                 <el-form-item label="影响期限">
                   <el-select v-model="dataSource.PunishTerm" placeholder="请选择影响期限" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('PunishTermType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('PunishTerm')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>

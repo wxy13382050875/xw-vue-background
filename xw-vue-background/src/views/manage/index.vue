@@ -8,7 +8,7 @@
             <el-col :span="6">
               <el-form-item label="状态">
                 <el-select v-model="form.JobStatus" placeholder="请选择状态" style="width: 100%;">
-                  <el-option v-for="(o, i) in $w.GetEnumArr('WorkingStateType')" :key="i" :value="o.value" :label="o.label" />
+                  <el-option v-for="(o, i) in $w.GetEnumArr('JobStatus')" :key="i" :value="o.value" :label="o.label" />
                 </el-select>
               </el-form-item>
             </el-col>
@@ -109,8 +109,8 @@ export default {
           item.GenderTitle = this.$w.GetEnumTitleByKey('Gender', item.Gender);
           item.JobLevelTitle = this.$w.GetEnumTitleByKey('rankType', item.JobLevel);
           item.PolitOutlookTitle = this.$w.GetEnumTitleByKey('PolitOutlook', item.PolitOutlook);
-          item.JobStatusTitle = this.$w.GetEnumTitleByKey('WorkingStateType', item.JobStatus);
-          item.PunishTermTitle = this.$w.GetEnumTitleByKey('PunishTermType', item.PunishLamp);
+          item.JobStatusTitle = this.$w.GetEnumTitleByKey('JobStatus', item.JobStatus);
+          item.PunishTermTitle = this.$w.GetEnumTitleByKey('PunishTerm', item.PunishLamp);
         });
         console.log(this.dataSource);
         setTimeout(() => {

@@ -2,7 +2,7 @@
   <div class="data-entry-container" style="width: 100%;">
     <div class="data-entry-header">
       <div>
-        <router-link to="/dataEntry/components/add-user-info"><el-button type="primary">新增领导干部</el-button></router-link>
+        <router-link to="/dataEntry/add-user-info"><el-button type="primary">新增领导干部</el-button></router-link>
       </div>
 
       <div>
@@ -76,7 +76,7 @@ export default {
       getPerArchiversList(this.form).then(response => {
         this.dataSource = response.data.list;
         this.dataSource.forEach((item, index) => {
-          item.JobStatusTitle = this.$w.GetEnumTitleByKey('WorkingStateType', item.JobStatus)
+          item.JobStatusTitle = this.$w.GetEnumTitleByKey('JobStatus', item.JobStatus)
 
         })
         console.log(this.dataSource);

@@ -123,7 +123,7 @@
               <el-col :span="8">
                 <el-form-item label="状态">
                   <el-select v-model="form.JobStatus" placeholder="请选择状态" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('WorkingStateType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('JobStatus')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -140,7 +140,7 @@
               :before-upload="beforeAvatarUpload"
               :headers="headers"
             >
-              <img v-if="form.File" :src="form.File" class="avatar" />
+              <img v-if="imageUrl" :src="imageUrl" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
           </div>
@@ -238,8 +238,8 @@
 
 <script>
 // import employment from "@/components/dataEntry/employment.vue";
-import { createPerArchives } from '@/api/dataEntry.js'
-import { getToken } from '@/utils/auth'
+import { createPerArchives } from '@/api/dataEntry.js';
+import { getToken } from '@/utils/auth';
 export default {
   name: 'Manage',
   components: {},
@@ -307,17 +307,19 @@ export default {
           JobPlace: ''
         }
       ]
-    };
+    }
   },
   created() {
-    console.log(getToken())
+    console.log(this.$route.query.PersonId)
+    
   },
   methods: {
-
     handleAvatarSuccess(res, file) {
-      this.form.File = URL.createObjectURL(file.raw);
+      console.log(res)
+      this.imageUrl = res.data.createObjectURL(file.raw)
     },
     beforeAvatarUpload(file) {
+      console.log('beforeAvatarUpload')
       const isJPG = file.type === 'image/jpeg';
       const isLt2M = file.size / 1024 / 1024 < 2;
 
@@ -353,7 +355,7 @@ export default {
     },
     deleteFamilyRow(index, rows) {
       // 删除改行
-      rows.splice(index, 1);
+      rows.splice(index, 1)
     },
     onSubmit() {
       // this.form.PersonFamily = this.PersonFamily;
@@ -364,52 +366,57 @@ export default {
         console.log(response);
         // this.list = response.data.items
         this.listLoading = false;
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-.user-info-content {
-  margin: 1.25rem;
-  border-radius: 5px;
-  border: 1px solid #1f5193;
-  background-color: #e0e8ee;
-  margin-bottom: 3.75rem;
+.user-info-container {
+  width: 100%;
 
-  .title {
-    background-color: #1f5193;
-    text-align: center;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    color: #ffffff;
-  }
-
-  .user-info-edit {
+  .user-info-content {
+    margin: 1.25rem;
+    border-radius: 5px;
+    border: 1px solid #1f5193;
     background-color: #e0e8ee;
-    margin-top: 0.625rem;
+    margin-bottom: 3.75rem;
 
-    .edit-info-item {
-      padding: 0.625rem;
+    .title {
+      background-color: #1f5193;
+      text-align: center;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      color: #ffffff;
+      width: 100%;
     }
-  }
 
-  .edit-picture-upload {
-    background-color: #ffffff;
-    width: 6.25rem;
-    height: 9.375rem;
-    text-align: center;
-    margin: 0.625rem;
-    margin-right: 1.25rem;
-  }
+    .user-info-edit {
+      background-color: #e0e8ee;
+      margin-top: 0.625rem;
 
-  .user-info-employment {
-    margin-right: 1.875rem;
-  }
+      .edit-info-item {
+        padding: 0.625rem;
+      }
+    }
 
-  .user-info-family {
-    margin-right: 1.875rem;
+    .edit-picture-upload {
+      background-color: #ffffff;
+      width: 6.25rem;
+      height: 9.375rem;
+      text-align: center;
+      margin: 0.625rem;
+      margin-right: 1.25rem;
+    }
+
+    .user-info-employment {
+      margin-right: 1.875rem;
+    }
+
+    .user-info-family {
+      margin-right: 1.875rem;
+    }
   }
 }
 
