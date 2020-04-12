@@ -24,7 +24,7 @@
               <el-col :span="8">
                 <el-form-item label="民族">
                   <el-select v-model="form.Nation" placeholder="请选择民族" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('NationType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('Nation')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -37,14 +37,14 @@
               <el-col :span="8">
                 <el-form-item label="婚姻状况">
                   <el-select v-model="form.MaritalStatus" placeholder="请选择婚姻状况" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('MarriageType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('MaritalStatus')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item inline="true" label="文化程序">
+                <el-form-item inline="true" label="文化程度">
                   <el-select v-model="form.EduLevel" placeholder="请选择文化程序" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('CulturalType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('EduLevel')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -68,14 +68,14 @@
               <el-col :span="8">
                 <el-form-item label="单位">
                   <el-select v-model="form.DeptId" placeholder="请选择单位" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('CompanyType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('DeptProp')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="单位性质">
                   <el-select v-model="form.DeptProp" placeholder="请选择单位性质" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('CompanyType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('DeptProp')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -85,7 +85,7 @@
               <el-col :span="8">
                 <el-form-item label="级别">
                   <el-select v-model="form.JobLevel" placeholder="请选择级别" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('rankType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('JobLevel')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -103,7 +103,7 @@
               <el-col :span="8">
                 <el-form-item label="全日制学历">
                   <el-select v-model="form.FullEduLevel" placeholder="请选择全日制学历" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('CulturalType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('FullEduLevel')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -113,7 +113,7 @@
               <el-col :span="8">
                 <el-form-item label="在职学历学位">
                   <el-select v-model="form.JobEduLevel" placeholder="请选择在职学历学位" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('CulturalType')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('JobEduLevel')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -192,7 +192,7 @@
                 <el-table-column prop="FamilyRelation" label="与本人关系" style="width:6vw;">
                   <template scope="scope">
                     <el-select v-model="scope.row.FamilyRelation" placeholder="请选择亲属关系" style="width: 100%;">
-                      <el-option v-for="(o, i) in $w.GetEnumArr('KindredType')" :key="i" :value="o.value" :label="o.label" />
+                      <el-option v-for="(o, i) in $w.GetEnumArr('FamilyRelation')" :key="i" :value="o.value" :label="o.label" />
                     </el-select>
                   </template>
                 </el-table-column>
@@ -311,7 +311,7 @@ export default {
   },
   created() {
     console.log(this.$route.query.PersonId)
-    
+    console.log();
   },
   methods: {
     handleAvatarSuccess(res, file) {

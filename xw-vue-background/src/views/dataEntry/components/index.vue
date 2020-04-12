@@ -24,6 +24,7 @@
 <script>
 export default {
   name: 'AppMain',
+  
   data() {
     return {
       PersonId:''
@@ -31,6 +32,7 @@ export default {
   },
   created() {
     this.PersonId = this.$route.query.PersonId
+
   },
   computed: {
     key() {

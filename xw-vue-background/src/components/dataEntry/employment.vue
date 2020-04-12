@@ -37,7 +37,7 @@
       <el-form ref="form" label-width="120px">
         <el-form-item label="与本人关系">
           <el-select v-model="family.FamilyRelation" placeholder="请选择亲属关系" style="width: 100%;">
-            <el-option v-for="(o, i) in $w.GetEnumArr('KindredType')" :key="i" :value="o.value" :label="o.label" />
+            <el-option v-for="(o, i) in $w.GetEnumArr('FamilyRelation')" :key="i" :value="o.value" :label="o.label" />
           </el-select>
         </el-form-item>
         <el-form-item label="姓名"><el-input v-model="family.Name" maxlength="10" size="mini" /></el-form-item>

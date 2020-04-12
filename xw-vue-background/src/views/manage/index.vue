@@ -22,14 +22,14 @@
             <el-col :span="6">
               <el-form-item label="级别">
                 <el-select v-model="form.JobLevel" placeholder="请选择级别" style="width: 100%;">
-                  <el-option v-for="(o, i) in $w.GetEnumArr('rankType')" :key="i" :value="o.value" :label="o.label" />
+                  <el-option v-for="(o, i) in $w.GetEnumArr('JobLevel')" :key="i" :value="o.value" :label="o.label" />
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="6">
               <el-form-item label="处理(处分)类型">
                 <el-select v-model="form.Punish" multiple placeholder="请选择处理(处分)类型" style="width: 100%;">
-                  <el-option v-for="(o, i) in $w.GetEnumArr('PunishmentType')" :key="i" :value="o.value" :label="o.label" />
+                  <el-option v-for="(o, i) in $w.GetEnumArr('PunishType')" :key="i" :value="o.value" :label="o.label" />
                 </el-select>
               </el-form-item>
             </el-col>
@@ -107,7 +107,7 @@ export default {
         this.dataSource = response.data.list;
         this.dataSource.forEach((item, index) => {
           item.GenderTitle = this.$w.GetEnumTitleByKey('Gender', item.Gender);
-          item.JobLevelTitle = this.$w.GetEnumTitleByKey('rankType', item.JobLevel);
+          item.JobLevelTitle = this.$w.GetEnumTitleByKey('JobLevel', item.JobLevel);
           item.PolitOutlookTitle = this.$w.GetEnumTitleByKey('PolitOutlook', item.PolitOutlook);
           item.JobStatusTitle = this.$w.GetEnumTitleByKey('JobStatus', item.JobStatus);
           item.PunishTermTitle = this.$w.GetEnumTitleByKey('PunishTerm', item.PunishLamp);

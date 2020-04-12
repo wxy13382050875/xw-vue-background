@@ -21,7 +21,7 @@
                 <el-form-item label="新任职单位及职务"><el-input v-model="dataSource.NewJob" placeholder="请输入新任职单位及职务" /></el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="调离时间"><el-date-picker v-model="dataSource.LeaveDate" type="date" placeholder="选择日期" style="width: 100%;" /></el-form-item>
+                <el-form-item label="调离时间"><el-date-picker v-model="dataSource.LeaveDate" value-format="yyyy-MM-dd" type="date" placeholder="选择日期" style="width: 100%;" /></el-form-item>
               </el-col>
               <el-col :span="16">
                 <el-form-item label="个人借用,保管,使用的文件资料交还情况">
@@ -75,9 +75,9 @@ export default {
   data() {
     return {
       dataSource: {
-        PersonId: '',
-        OldDeptId: '',
-        NewDeptId: '',
+        PersonId: 3,
+        OldDeptId: 0,
+        NewDeptId: 2,
         NewDeptName: '',
         NewJob: '',
         LeaveDate: '',
@@ -93,8 +93,10 @@ export default {
 
   methods: {
     onSubmit() {
+      this.dataSource.DeptId = parseInt(this.dataSource.DeptId)
+      this.dataSource.PersonId = parseInt(this.dataSource.PersonId)
       this.listLoading = true
-      createLeaveOffice(this.form).then(response => {
+      createLeaveOffice(this.dataSource).then(response => {
         console.log(response)
         this.listLoading = false
       })

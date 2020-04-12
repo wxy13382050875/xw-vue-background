@@ -54,6 +54,9 @@
           </el-table-column>
         </el-table>
       </div>
+      <div class="wf-bottom" style="width: 100%; text-align:center">
+        <el-button type="primary" style="" @click="onSubmit">添加</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -77,11 +80,19 @@ export default {
       },
       radio: '1',
       dataSource: [{ startTime: '', endTime: '', unit: '', position: '' }]
-    };
+    }
   },
 
-  methods: {}
-};
+  methods: {
+    onSubmit() {
+      // createBanquet(this.form).then(response => {
+      //   console.log(response)
+      //   // this.list = response.data.items
+      //   this.listLoading = false
+      // })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

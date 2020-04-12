@@ -9,36 +9,36 @@
               <el-col :span="8">
                 <el-form-item label="谈话种类">
                   <el-select v-model="dataSource.TalkType" placeholder="请选择谈话种类" style="width: 100%;">
-                    <el-option v-for="(o, i) in $w.GetEnumArr('JobStatus')" :key="i" :value="o.value" :label="o.label" />
+                    <el-option v-for="(o, i) in $w.GetEnumArr('TalkType')" :key="i" :value="o.value" :label="o.label" />
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="谈话时间"><el-date-picker v-model="dataSource.TalkDate" type="date" placeholder="选择日期" style="width: 100%;" /></el-form-item>
+                <el-form-item label="谈话时间"><el-date-picker v-model="dataSource.TalkDate" type="date" value-format="yyyy-MM-dd" placeholder="选择日期" style="width: 100%;" /></el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="谈话人姓名">
-                  <el-input v-model="dataSource.UserName" type="textarea" size="mini" :autosize="{ minRows: 2, maxRows: 4 }" placeholder="请输入谈话人姓名" />
+                  <el-input v-model="dataSource.UserName"   placeholder="请输入谈话人姓名" />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="谈话人单位">
-                  <el-input v-model="dataSource.DeptName" type="textarea" size="mini" :autosize="{ minRows: 2, maxRows: 4 }" placeholder="请输入谈话人单位" />
+                  <el-input v-model="dataSource.DeptName"   placeholder="请输入谈话人单位" />
                 </el-form-item>
               </el-col>
               <el-col :span="16">
                 <el-form-item label="谈话人职务">
-                  <el-input v-model="dataSource.UserJob" type="textarea" size="mini" :autosize="{ minRows: 2, maxRows: 4 }" placeholder="请输入谈话人职务" />
+                  <el-input v-model="dataSource.UserJob"   placeholder="请输入谈话人职务" />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="谈话简要事由">
-                  <el-input v-model="dataSource.TalkContent" type="textarea" size="mini" :autosize="{ minRows: 2, maxRows: 4 }" placeholder="请输入谈话简要事由" />
+                  <el-input v-model="dataSource.TalkContent"   placeholder="请输入谈话简要事由" />
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item label="备注">
-                  <el-input v-model="dataSource.Remark" type="textarea" size="mini" :autosize="{ minRows: 2, maxRows: 4 }" placeholder="请输入备注" />
+                  <el-input v-model="dataSource.Remark"   placeholder="请输入备注" />
                 </el-form-item>
               </el-col>
             </el-row>
@@ -48,33 +48,41 @@
         <div class="update-file-item">
           <el-upload
             class="upload-file"
-            action="https://jsonplaceholder.typicode.com/posts/"
+            action="http://ynseego.com:16002/system/file/upload"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :before-remove="beforeRemove"
-            multiple
-            :limit="3"
+            :limit="1"
+            :on-success="handleSuccess"
             :on-exceed="handleExceed"
             :file-list="fileList"
+            :headers="headers"
           >
             <el-button size="small" type="primary">点击上传附件</el-button>
             <!-- <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div> -->
           </el-upload>
         </div>
       </div>
+      <div class="wf-bottom" style="width: 100%; text-align:center">
+        <el-button type="primary" style="" @click="onSubmit">添加</el-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { createTalk } from '@/api/dataEntry.js'
+import { getToken } from '@/utils/auth'
 export default {
   name: 'WeddingsFunerals',
   components: {},
   data() {
     return {
+      headers: { Token: getToken() },
+      fileList:[],
       dataSource: {
-        PersonId: '',
-        DeptId: '',
+        PersonId: 3,
+        DeptId: 1,
         TalkType: '',
         TalkDate: '',
         UserName: '',
@@ -82,24 +90,46 @@ export default {
         UserJob: '',
         TalkContent: '',
         Remark: '',
-        Files: ''
-      }
+        Files: null
+      },
+      imageUrl: ''
     }
   },
 
   methods: {
+    handleSuccess(res, file) {
+      console.log(res)
+      // this.dataSource.Files = res.data
+
+      // this.imageUrl = res.data.createObjectURL(file.raw)
+    },
     handleRemove(file, fileList) {
       console.log(file, fileList)
     },
     handlePreview(file) {
       console.log(file)
-      this.dataSource.Files = URL.createObjectURL(file.raw)
+
     },
     handleExceed(files, fileList) {
-      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
+      this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)
+    },
+    onSubmit() {
+      this.dataSource.DeptId = parseInt(this.dataSource.DeptId)
+      this.dataSource.PersonId = parseInt(this.dataSource.PersonId)
+      // this.form.CarNum = parseInt(this.form.CarNum)
+      // this.form.DeskNum = parseInt(this.form.DeskNum)
+      // this.form.RelativesNum = parseInt(this.form.RelativesNum)
+      // this.form.NonRelativesNum = parseInt(this.form.NonRelativesNum)
+      // this.form.DeskMoney = parseFloat(this.form.DeskMoney)
+      this.listLoading = true
+      createTalk(this.dataSource).then(response => {
+        console.log(response)
+        // this.list = response.data.items
+        this.listLoading = false
+      })
     }
   }
 }

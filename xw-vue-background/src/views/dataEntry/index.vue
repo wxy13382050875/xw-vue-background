@@ -35,13 +35,15 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination'; // Secondary package based on el-pagination
-import { getPerArchiversList } from '@/api/dataEntry.js';
+import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
+import { getPerArchiversList } from '@/api/dataEntry.js'
+
 export default {
   name: 'DataEntry',
   components: {
     Pagination
   },
+
   data() {
     return {
       total: 0,
@@ -57,10 +59,10 @@ export default {
       },
 
       dataSource: []
-    };
+    }
   },
   created() {
-    // console.log(this.$w.GetEnumTitleByKey('PolitOutlook','1'))
+    // console.log(this.$store.getters.user )
     this.getList()
   },
   methods: {
@@ -71,25 +73,24 @@ export default {
       console.log(row)
     },
     getList() {
-      this.listLoading = true;
-      console.log(this.form);
+      this.listLoading = true
+      console.log(this.form)
       getPerArchiversList(this.form).then(response => {
-        this.dataSource = response.data.list;
+        this.dataSource = response.data.list
         this.dataSource.forEach((item, index) => {
           item.JobStatusTitle = this.$w.GetEnumTitleByKey('JobStatus', item.JobStatus)
-
         })
-        console.log(this.dataSource);
+        console.log(this.dataSource)
         setTimeout(() => {
-          this.listLoading = false;
-        }, 1.5 * 1000);
+          this.listLoading = false
+        }, 1.5 * 1000)
       })
     },
     onQueryClick() {
       this.getList()
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

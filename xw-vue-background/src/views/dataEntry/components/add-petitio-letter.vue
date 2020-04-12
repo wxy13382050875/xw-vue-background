@@ -7,29 +7,29 @@
           <el-form ref="form" :model="dataSource" label-width="130px">
             <el-row :gutter="20">
               <el-col :span="8">
-                <el-form-item label="单位"><el-input v-model="dataSource.Name" maxlength="10" /></el-form-item>
+                <el-form-item label="单位"><el-input v-model="dataSource.unit" maxlength="10" /></el-form-item>
               </el-col>
               <el-col :span="16">
-                <el-form-item label="职务"><el-input v-model="dataSource.Name" maxlength="10" /></el-form-item>
+                <el-form-item label="职务"><el-input v-model="dataSource.position" maxlength="10" /></el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="受理时间">
-                  <el-date-picker v-model="dataSource.Birthday" type="date" value-format="yyyy-MM-dd" placeholder="选择日期" style="width: 100%;" />
+                  <el-date-picker v-model="dataSource.PetitionDate" type="date" value-format="yyyy-MM-dd" placeholder="选择日期" style="width: 100%;" />
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="核查是否属实">
                   <el-radio-group v-model="dataSource.IsReal" size="mini" @change="changeSubjectType">
-                    <el-radio label="1">是</el-radio>
-                    <el-radio label="0">否</el-radio>
+                    <el-radio label="true">是</el-radio>
+                    <el-radio label="false">否</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="办理时间及处理结果"><el-input v-model="dataSource.NativePlace" maxlength="20" /></el-form-item>
+                <el-form-item label="办理时间及处理结果"><el-input v-model="dataSource.DealResult" maxlength="20" /></el-form-item>
               </el-col>
               <el-col :span="24">
-                <el-form-item label="备注"><el-input v-model="dataSource.BirthPlace" maxlength="20" /></el-form-item>
+                <el-form-item label="备注"><el-input v-model="dataSource.Remark" maxlength="20" /></el-form-item>
               </el-col>
             </el-row>
           </el-form>

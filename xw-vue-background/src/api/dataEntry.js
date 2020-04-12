@@ -67,3 +67,12 @@ export function createPunish(param) {
     data:param
   })
 }
+
+//创建约谈提醒记录
+export function createTalk(param) {
+  return request({
+    url: '/biz/talk/create',
+    method: 'post',
+    data:param
+  })
+}

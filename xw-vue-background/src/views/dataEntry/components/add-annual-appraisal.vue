@@ -25,7 +25,7 @@
                 <el-table-column prop="AssessmentLevel" label="考核等次">
                   <template scope="scope">
                     <el-select v-model="scope.row.AssessmentLevel" placeholder="请选择考核等次">
-                      <el-option v-for="(o, i) in $w.GetEnumArr('AssessType')" :key="i" :value="o.value" :label="o.label" />
+                      <el-option v-for="(o, i) in $w.GetEnumArr('AssessmentLevel')" :key="i" :value="o.value" :label="o.label" />
                     </el-select>
                   </template>
                 </el-table-column>
