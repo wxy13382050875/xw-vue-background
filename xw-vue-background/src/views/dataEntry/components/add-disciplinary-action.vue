@@ -40,14 +40,15 @@
           <div class="update-file-item">
           <el-upload
             class="upload-file"
-            action="https://jsonplaceholder.typicode.com/posts/"
+            action="http://ynseego.com:16002/system/file/upload"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :before-remove="beforeRemove"
-            multiple
-            :limit="3"
+            :on-success="handleSuccess"
+            :limit="1"
             :on-exceed="handleExceed"
             :file-list="fileList"
+            :headers="headers"
           >
             <el-button size="small" type="primary">点击上传附件</el-button>
           </el-upload>
@@ -63,11 +64,17 @@
 <script>
 // import employment from "@/components/dataEntry/employment.vue";
 import { createPunish } from '@/api/dataEntry.js'
+import {
+  getToken
+} from '@/utils/auth'
 export default {
   name: 'Manage',
   components: {},
   data() {
     return {
+      headers: {
+        Token: getToken()
+      },
       dataSource: {
         unit: '',
         position: '',
@@ -83,16 +90,9 @@ export default {
   },
   created() {},
   methods: {
-    onSubmit() {
-      console.log(this.dataSource)
-      this.listLoading = true
-      createPunish(this.dataSource).then(response => {
-        console.log(response)
-        this.listLoading = false
-      })
-    },
-    changeSubjectType(nv) {
-      this.dataSource.IsReal = nv
+    handleSuccess(res, file) {
+      console.log(res)
+
     },
     handleRemove(file, fileList) {
       console.log(file, fileList)
@@ -106,7 +106,19 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)
-    }
+    },
+    onSubmit() {
+      console.log(this.dataSource)
+      this.listLoading = true
+      createPunish(this.dataSource).then(response => {
+        console.log(response)
+        this.listLoading = false
+      })
+    },
+    changeSubjectType(nv) {
+      this.dataSource.IsReal = nv
+    },
+
   }
 }
 </script>

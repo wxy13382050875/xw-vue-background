@@ -46,8 +46,8 @@
               <el-col :span="8">
                 <el-form-item label="是否合办">
                   <el-radio-group v-model="form.IsTogether" size="mini" @change="changeSubjectType">
-                    <el-radio label='true'>是</el-radio>
-                    <el-radio label='false'>否</el-radio>
+                    <el-radio label="true">是</el-radio>
+                    <el-radio label="false">否</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>
@@ -84,10 +84,11 @@
           </el-form>
         </div>
       </div>
+      <div class="wf-bottom" style="width: 100%; text-align:center">
+        <el-button type="primary" style="" @click="onSubmit">添加</el-button>
+      </div>
     </div>
-    <div class="wf-bottom" style="width: 100%; text-align:center">
-      <el-button type="primary" style="" @click="onSubmit">添加</el-button>
-    </div>
+    
   </div>
 </template>
 
@@ -102,7 +103,7 @@ export default {
   data() {
     return {
       form: {
-        PersonId: '3',
+        PersonId: '',
         BanquetTitle: '',
         BanquetTime: '',
         BanquetPlace: '',
@@ -119,7 +120,16 @@ export default {
     }
   },
   created() {
+    // if (typeof(this.$route.query.PersonId) !== 'undefined') {
+    //   const params = {}
+    //   params.PersonId = parseInt(this.$route.query.PersonId)
+    //   this.listLoading = true
+    //   getPersonInfo(params).then(response => {
+    //     console.log(response)
 
+    //     this.listLoading = false
+    //   })
+    // }
   },
   methods: {
     changeSubjectType(nv) {

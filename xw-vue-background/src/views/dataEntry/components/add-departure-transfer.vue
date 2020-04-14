@@ -76,7 +76,7 @@ export default {
     return {
       dataSource: {
         PersonId: 3,
-        OldDeptId: 0,
+        OldDeptId: this.$store.state.user.DeptId,
         NewDeptId: 2,
         NewDeptName: '',
         NewJob: '',

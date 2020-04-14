@@ -62,7 +62,7 @@ export default {
     }
   },
   created() {
-    // console.log(this.$store.getters.user )
+    console.log(this.$store.state.user)
     this.getList()
   },
   methods: {

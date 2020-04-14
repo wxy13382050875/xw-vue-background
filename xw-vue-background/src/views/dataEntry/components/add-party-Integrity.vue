@@ -7,14 +7,15 @@
           <el-form-item label="附件">
             <el-upload
               class="upload-file"
-              action="https://jsonplaceholder.typicode.com/posts/"
+              action="http://ynseego.com:16002/system/file/upload"
               :on-preview="handlePreview"
               :on-remove="handleRemove"
               :before-remove="beforeRemove"
-              multiple
-              :limit="3"
+              :limit="1"
+              :on-success="handleSuccess"
               :on-exceed="handleExceed"
               :file-list="fileList"
+              :headers="headers"
             >
               <el-button size="small" type="primary">点击上传附件</el-button>
               <!-- <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div> -->
@@ -22,21 +23,31 @@
           </el-form-item>
         </el-form>
       </div>
+      <div class="dt-bottom"><el-button type="primary" @click="onSubmit">添加</el-button></div>
     </div>
   </div>
 </template>
 
 <script>
+  import {
+    getToken
+  } from '@/utils/auth'
 export default {
   name: 'WeddingsFunerals',
   components: {},
   data() {
     return {
+      headers: {
+        Token: getToken()
+      },
       Files: ''
     }
   },
 
   methods: {
+    handleSuccess(res, file) {
+      console.log(res)
+    },
     handleRemove(file, fileList) {
       console.log(file, fileList)
     },
@@ -69,6 +80,11 @@ export default {
   }
   .edit-ra-item {
     // margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+  }
+  .dt-bottom {
+    width: 100%;
+    text-align: center;
     margin-bottom: 0.625rem;
   }
 }

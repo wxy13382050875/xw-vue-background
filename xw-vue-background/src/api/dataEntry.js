@@ -8,7 +8,14 @@ export function createPerArchives(param) {
     data:param
   })
 }
-
+//创建约谈提醒记录
+export function getPersonInfo(param) {
+  return request({
+    url: '/biz/person/info',
+    method: 'post',
+    data:param
+  })
+}
 // 2.0、人员档案列表
 export function getPerArchiversList(param) {
   return request({
@@ -72,6 +79,15 @@ export function createPunish(param) {
 export function createTalk(param) {
   return request({
     url: '/biz/talk/create',
+    method: 'post',
+    data:param
+  })
+}
+
+//上报附件
+export function updateBizFiles(param) {
+  return request({
+    url: '/biz/files/create',
     method: 'post',
     data:param
   })

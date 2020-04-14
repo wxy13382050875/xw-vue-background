@@ -82,7 +82,7 @@ export default {
       fileList:[],
       dataSource: {
         PersonId: 3,
-        DeptId: 1,
+        DeptId: this.$store.state.user.DeptId,
         TalkType: '',
         TalkDate: '',
         UserName: '',
@@ -99,9 +99,7 @@ export default {
   methods: {
     handleSuccess(res, file) {
       console.log(res)
-      // this.dataSource.Files = res.data
-
-      // this.imageUrl = res.data.createObjectURL(file.raw)
+      
     },
     handleRemove(file, fileList) {
       console.log(file, fileList)
