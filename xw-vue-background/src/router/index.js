@@ -62,13 +62,15 @@ export const constantRoutes = [{
   {
     path: '/manage',
     component: Layout,
+    
     children: [{
       path: 'index',
       name: 'manage',
       component: () => import('@/views/manage/index'),
       meta: {
         title: '档案管理',
-        icon: 'form'
+        icon: 'form',
+        roles: ['admin'] // or you can only set roles in sub nav
       }
     }]
   },

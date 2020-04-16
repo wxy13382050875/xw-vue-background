@@ -3,7 +3,8 @@
     <div class="content"><router-view :key="key" /></div>
     <div class="sider-bar">
       <div class="right-nav">
-        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-user-info?PersonId=' + PersonId">基本信息</router-link></div>
+        <router-view :key="key" />
+        <!-- <div class="right-item"><router-link :to="'/dataEntry/components/index/add-user-info?PersonId=' + PersonId">基本信息</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-weddings-funerals?PersonId=' + PersonId">婚丧喜庆</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-refuse-hand?PersonId=' + PersonId">拒收或上交</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-annual-appraisal?PersonId=' + PersonId">年度考核</router-link></div>
@@ -15,7 +16,7 @@
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-disciplinary-action?PersonId=' + PersonId">问责处理、党政纪处分</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-daily-supervision?PersonId=' + PersonId">日常监督</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-other-Integrity?PersonId=' + PersonId">其他</router-link></div>
-        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-party-Integrity?PersonId=' + PersonId">党风兼政意见</router-link></div>
+        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-party-Integrity?PersonId=' + PersonId">党风兼政意见</router-link></div> -->
       </div>
     </div>
   </div>
@@ -24,22 +25,21 @@
 <script>
 export default {
   name: 'AppMain',
-  
+
   data() {
     return {
-      PersonId:''
-    };
-  },
-  created() {
-    this.PersonId = this.$route.query.PersonId
-
+      PersonId: ''
+    }
   },
   computed: {
     key() {
-      return this.$route.path;
+      return this.$route.path
     }
+  },
+  created() {
+    this.PersonId = this.$route.query.PersonId
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
