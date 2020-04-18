@@ -33,7 +33,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="12">
               <el-form-item label="关键字："><el-input v-model="form.Kw" style="width: 25.25rem;" placeholder="请输入内容" prefix-icon="el-icon-search" /></el-form-item>
             </el-col>
             <el-col :span="8">
@@ -68,8 +68,8 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination'; // Secondary package based on el-pagination
-import { getPerArchiversList } from '@/api/dataEntry.js';
+import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
+import { getPerArchiversList } from '@/api/dataEntry.js'
 export default {
   name: 'Manage',
   components: {
@@ -90,89 +90,93 @@ export default {
       },
 
       dataSource: []
-    };
+    }
   },
   created() {
     // console.log(getDefaultState());
-    this.getProList();
+    this.getProList()
   },
   methods: {
     handleClick(row) {
-      console.log(row);
+      console.log(row)
     },
     getProList() {
-      this.listLoading = true;
-      console.log(this.form);
+      this.listLoading = true
+      console.log(this.form)
       getPerArchiversList(this.form).then(response => {
-        this.dataSource = response.data.list;
+        this.dataSource = response.data.list
         this.dataSource.forEach((item, index) => {
-          item.GenderTitle = this.$w.GetEnumTitleByKey('Gender', item.Gender);
-          item.JobLevelTitle = this.$w.GetEnumTitleByKey('JobLevel', item.JobLevel);
-          item.PolitOutlookTitle = this.$w.GetEnumTitleByKey('PolitOutlook', item.PolitOutlook);
-          item.JobStatusTitle = this.$w.GetEnumTitleByKey('JobStatus', item.JobStatus);
-          item.PunishTermTitle = this.$w.GetEnumTitleByKey('PunishTerm', item.PunishLamp);
-        });
-        console.log(this.dataSource);
+          item.GenderTitle = this.$w.GetEnumTitleByKey('Gender', item.Gender)
+          item.JobLevelTitle = this.$w.GetEnumTitleByKey('JobLevel', item.JobLevel)
+          item.PolitOutlookTitle = this.$w.GetEnumTitleByKey('PolitOutlook', item.PolitOutlook)
+          item.JobStatusTitle = this.$w.GetEnumTitleByKey('JobStatus', item.JobStatus)
+          item.PunishTermTitle = this.$w.GetEnumTitleByKey('PunishTerm', item.PunishLamp)
+        })
+        console.log(this.dataSource)
         setTimeout(() => {
-          this.listLoading = false;
-        }, 1.5 * 1000);
-      });
+          this.listLoading = false
+        }, 1.5 * 1000)
+      })
     },
     onQueryClick() {
-      this.getProList();
+      this.getProList()
     },
     onClearClick() {
-      this.form = {};
+      this.form = {}
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-.manage-header {
-  margin: 1.25rem;
-  border-radius: 5px;
-  border: 1px solid #1f5193;
-  background-color: #e0e8ee;
-  .title {
-    background-color: #1f5193;
-    text-align: center;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    color: #ffffff;
-  }
-  .manage-condition {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 3.125rem;
-    margin-right: 3.125rem;
-    margin-top: 0.625rem;
-  }
-  .manage-query-content {
-    display: flex;
-    justify-content: space-between;
-    width: 20%;
-    margin-top: 0.625rem;
-    margin-left: 3.125rem;
-    margin-bottom: 0.625rem;
-    .manage-query {
-      display: flex;
-      justify-content: space-between;
+  .manage-container{
+    width: 100%;
+    .manage-header {
+      margin: 1.25rem;
+      border-radius: 5px;
+      border: 1px solid #1f5193;
+      background-color: #e0e8ee;
+      .title {
+        background-color: #1f5193;
+        text-align: center;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        color: #ffffff;
+      }
+      .manage-condition {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 3.125rem;
+        margin-right: 3.125rem;
+        margin-top: 0.625rem;
+      }
+      .manage-query-content {
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+        margin-top: 0.625rem;
+        margin-left: 3.125rem;
+        margin-bottom: 0.625rem;
+        .manage-query {
+          display: flex;
+          justify-content: space-between;
+        }
+        .manage-query-btn {
+          display: flex;
+          justify-content: space-between;
+          margin-left: 1.25rem;
+        }
+      }
     }
-    .manage-query-btn {
-      display: flex;
-      justify-content: space-between;
-      margin-left: 1.25rem;
+    .manage-body {
+      margin: 1.25rem;
+      border-radius: 5px;
+      border: 1px solid #1f5193;
+      background-color: #e0e8ee;
+    }
+    .manage-pagination {
+      float: right;
     }
   }
-}
-.manage-body {
-  margin: 1.25rem;
-  border-radius: 5px;
-  border: 1px solid #1f5193;
-  background-color: #e0e8ee;
-}
-.manage-pagination {
-  float: right;
-}
+
 </style>

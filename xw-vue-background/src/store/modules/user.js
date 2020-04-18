@@ -74,7 +74,7 @@ const actions = {
 
         commit('SET_TOKEN', data.Token)
         commit('SET_USER', data.User)
-        commit('SET_ROLES', data.User)
+        commit('SET_ROLES', data.Roles)
         commit('SET_AUTH', data.Auth)
         commit('SET_AVATAR', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif')
         resolve()

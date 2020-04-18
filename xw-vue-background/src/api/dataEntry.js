@@ -32,6 +32,14 @@ export function createBanquet(param) {
     data:param
   })
 }
+//创建婚丧事宜记录
+export function getBanquetList(param) {
+  return request({
+    url: '/biz/banquet/list',
+    method: 'post',
+    data:param
+  })
+}
 //创建离职交接
 export function createLeaveOffice(param) {
   return request({
@@ -66,10 +74,26 @@ export function createPetition(param) {
     data:param
   })
 }
+//信访记录列表
+export function getPetitionList(param) {
+  return request({
+    url: '/biz/petition/list',
+    method: 'post',
+    data:param
+  })
+}
 //创建问责处理记录
 export function createPunish(param) {
   return request({
     url: '/biz/petition/create',
+    method: 'post',
+    data:param
+  })
+}
+//问责处理记录列表
+export function getPunishList(param) {
+  return request({
+    url: '/biz/petition/list',
     method: 'post',
     data:param
   })
@@ -79,6 +103,14 @@ export function createPunish(param) {
 export function createTalk(param) {
   return request({
     url: '/biz/talk/create',
+    method: 'post',
+    data:param
+  })
+}
+//约谈提醒列表
+export function getTalkList(param) {
+  return request({
+    url: '/biz/talk/list',
     method: 'post',
     data:param
   })
