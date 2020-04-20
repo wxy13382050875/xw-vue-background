@@ -18,7 +18,7 @@ const getDefaultState = () => {
     name: '',
     avatar: '',
     User: {},
-    Roles: [],
+    roles: [],
     Config:{},
     Auth:[],
   }
@@ -42,9 +42,9 @@ const mutations = {
   SET_USER: (state, User) => {
     state.User = User
   },
-  SET_ROLES: (state, Roles) => {
-    state.Roles = Roles
-  },
+ SET_ROLES: (state, roles) => {
+   state.roles = roles
+ },
   SET_CONFIG: (state, Config) => {
     state.Config = Config
   },
@@ -72,9 +72,10 @@ const actions = {
         } = response
         setToken(data.Token)
 
+
         commit('SET_TOKEN', data.Token)
         commit('SET_USER', data.User)
-        commit('SET_ROLES', data.User)
+        commit('SET_ROLES', data.Roles)
         commit('SET_AUTH', data.Auth)
         commit('SET_AVATAR', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif')
         resolve()
