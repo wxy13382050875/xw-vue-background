@@ -280,7 +280,6 @@
     <div class="user-info-bottom">
       <div style="margin: 0.625rem">
         <el-button type="primary" @click="onSubmit">提交</el-button>
-        <el-button type="primary" @click="onSubmit">保存</el-button>
         <el-button type="primary" @click="onSubmit">预览</el-button>
         <el-button>取消</el-button>
       </div>
@@ -386,26 +385,39 @@ export default {
       return isJPG && isLt2M
     },
 
-    addJobRow() {
-      this.PersonJob.push({
-        StartTime: '',
-        EndTime: '',
-        JobPlace: '',
-        Job: ''
-      })
+    addJobRow(job) {
+      console.log(job)
+      var arr = Object.values(job)
+      if (arr.indexOf('') !== -1) {
+        this.$message.error('请完善任职情况')
+        return
+      } else {
+        this.PersonJob.push({
+          StartTime: '',
+          EndTime: '',
+          JobPlace: '',
+          Job: ''
+        })
+      }
     },
     deleteJobRow(index, rows) {
       // 删除改行
       rows.splice(index, 1)
     },
-    addFamilyRow() {
-      this.PersonFamily.push({
-        FamilyRelation: '',
-        Name: '',
-        Age: '',
-        PolitOutlook: '',
-        JobPlace: ''
-      })
+    addFamilyRow(family) {
+      var arr = Object.values(family)
+      if (arr.indexOf('') !== -1) {
+        this.$message.error('请完善家庭成员情况')
+        return
+      } else {
+        this.PersonFamily.push({
+          FamilyRelation: '',
+          Name: '',
+          Age: '',
+          PolitOutlook: '',
+          JobPlace: ''
+        })
+      }
     },
     deleteFamilyRow(index, rows) {
       // 删除改行
