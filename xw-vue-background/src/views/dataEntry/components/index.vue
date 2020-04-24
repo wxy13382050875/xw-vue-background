@@ -12,11 +12,7 @@
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-departure-transfer?PersonId=' + PersonId">离职交接</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-reporting-activities?PersonId=' + PersonId">述职述廉，民主测评</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-life-would?PersonId=' + PersonId">生活会对照检查</router-link></div>
-        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-petitio-letter?PersonId=' + PersonId">信访举报</router-link></div>
-        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-disciplinary-action?PersonId=' + PersonId">问责处理、党政纪处分</router-link></div>
-        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-daily-supervision?PersonId=' + PersonId">日常监督</router-link></div>
-        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-other-Integrity?PersonId=' + PersonId">其他</router-link></div>
-        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-party-Integrity?PersonId=' + PersonId">党风兼政意见</router-link></div>
+        
       </div>
     </div>
   </div>

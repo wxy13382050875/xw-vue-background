@@ -18,9 +18,9 @@ import '@/permission' // permission control
 // 引入dog2框架逻辑
 import '@/assets/dog2js/index.js'
 // 引入框架级UI库
-import dog2ui from '@/assets/dog2ui/index.js'
+// import dog2ui from '@/assets/dog2ui/index.js'
 
-Vue.use(dog2ui)
+// Vue.use(dog2ui)
 
 // 正整数和浮点数输入自定义指令
 import floatNumber from '@/assets/floatNumber'

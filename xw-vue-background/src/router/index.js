@@ -62,7 +62,7 @@ export const constantRoutes = [{
   {
     path: '/manage',
     component: Layout,
-    
+
     children: [{
       path: 'index',
       name: 'manage',
@@ -74,21 +74,101 @@ export const constantRoutes = [{
       }
     }]
   },
-
-  {
-    path: '/message',
+{
+    path: '/manage/components',
     component: Layout,
+    hidden: true,
+    redirect: '/manage/components/index',
     children: [{
       path: 'index',
-      name: 'message',
-      component: () => import('@/views/message/index'),
+      name: 'rightTab',
+      component: () => import('@/views/manage/components/index'),
+      redirect: '/manage/components/index/add-questioning-remind',
       meta: {
-        title: '消息中心',
+        title: '',
         icon: 'form'
-      }
+      },
+      children: [
+        {
+          path: 'add-questioning-remind',
+          hidden: true,
+          name: 'add-questioning-remind',
+          component: () => import('@/views/manage/components/add-questioning-remind'),
+          meta: {
+            title: '约谈提醒',
+            icon: 'form'
+          }
+        },
+        {
+          path: 'add-petitio-letter',
+          hidden: true,
+          name: 'add-petitio-letter',
+          component: () => import('@/views/manage/components/add-petitio-letter'),
+          meta: {
+            title: '信访举报',
+            icon: 'form'
+          }
+        },
+        {
+          path: 'add-disciplinary-action',
+          hidden: true,
+          name: 'add-disciplinary-action',
+          component: () => import('@/views/manage/components/add-disciplinary-action'),
+          meta: {
+            title: '问责处理、党政纪处分',
+            icon: 'form'
+          }
+        },
+        {
+          path: 'add-daily-supervision',
+          hidden: true,
+          name: 'add-daily-supervision',
+          component: () => import('@/views/manage/components/add-daily-supervision'),
+          meta: {
+            title: '日常监督',
+            icon: 'form'
+          }
+        },
+        {
+          path: 'add-other-Integrity',
+          hidden: true,
+          name: 'add-other-Integrity',
+          component: () => import('@/views/manage/components/add-other-Integrity'),
+          meta: {
+            title: '其他',
+            icon: 'form'
+          }
+        },
+        {
+          path: 'add-party-Integrity',
+          hidden: true,
+          name: 'add-party-Integrity',
+          component: () => import('@/views/manage/components/add-party-Integrity'),
+          meta: {
+            title: '党风廉政意见',
+            icon: 'form'
+          }
+        },
+
+      ]
     }]
   },
+
+  
+  // 404 page must be placed at the end !!!
   {
+    path: '*',
+    redirect: '/404',
+    hidden: true
+  }
+]
+/**
+ * asyncRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const asyncRoutes = [
+  
+{
     path: '/dataEntry',
     component: Layout,
     children: [{
@@ -211,68 +291,13 @@ export const constantRoutes = [{
             icon: 'form'
           }
         },
-        {
-          path: 'add-petitio-letter',
-          hidden: true,
-          name: 'add-petitio-letter',
-          component: () => import('@/views/dataEntry/components/add-petitio-letter'),
-          meta: {
-            title: '信访举报',
-            icon: 'form'
-          }
-        },
-        {
-          path: 'add-disciplinary-action',
-          hidden: true,
-          name: 'add-disciplinary-action',
-          component: () => import('@/views/dataEntry/components/add-disciplinary-action'),
-          meta: {
-            title: '问责处理、党政纪处分',
-            icon: 'form'
-          }
-        },
-        {
-          path: 'add-daily-supervision',
-          hidden: true,
-          name: 'add-daily-supervision',
-          component: () => import('@/views/dataEntry/components/add-daily-supervision'),
-          meta: {
-            title: '日常监督',
-            icon: 'form'
-          }
-        },
-        {
-          path: 'add-other-Integrity',
-          hidden: true,
-          name: 'add-other-Integrity',
-          component: () => import('@/views/dataEntry/components/add-other-Integrity'),
-          meta: {
-            title: '其他',
-            icon: 'form'
-          }
-        },
-        {
-          path: 'add-party-Integrity',
-          hidden: true,
-          name: 'add-party-Integrity',
-          component: () => import('@/views/dataEntry/components/add-party-Integrity'),
-          meta: {
-            title: '党风廉政意见',
-            icon: 'form'
-          }
-        },
 
       ]
     }]
   },
   // 404 page must be placed at the end !!!
-  {
-    path: '*',
-    redirect: '/404',
-    hidden: true
-  }
+  { path: '*', redirect: '/404', hidden: true }
 ]
-
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({

@@ -1,5 +1,0 @@
-import './request/index'
-import './biz/user'
-import './biz/login'
-import './biz/formRule'
-import './biz/util'

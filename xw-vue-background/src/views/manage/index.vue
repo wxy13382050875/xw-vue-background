@@ -58,7 +58,8 @@
         <el-table-column prop="JobStatusTitle" align="center" label="状态" width="220" />
         <el-table-column fixed="right" align="center" label="操作">
           <template slot-scope="scope">
-            <el-button type="text" size="small" @click="handleClick(scope.row)">查看</el-button>
+            <router-link :to="'/manage/components?PersonId=' + scope.row.PersonId"><el-button type="text" size="small">查看</el-button></router-link>
+            <!-- <el-button type="text" size="small" @click="handleClick(scope.row)">查看</el-button> -->
           </template>
         </el-table-column>
       </el-table>

@@ -62,8 +62,9 @@ export default {
     }
   },
   created() {
-    console.log(this.$store.state.user)
+    // console.log(this.$store.getters.user )
     this.getList()
+    console.log(this.$store.state.user)
   },
   methods: {
     handleDetailClick(row) {
