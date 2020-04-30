@@ -12,9 +12,9 @@
               :on-remove="handleRemove"
               :before-remove="beforeRemove"
               :on-success="handleSuccess"
-              :limit="1"
               :on-exceed="handleExceed"
-              :file-list="fileList"
+              multiple=""
+              :file-list="form.fileList"
               :headers="headers"
             >
               <el-button size="small" type="primary">点击上传附件</el-button>
@@ -29,9 +29,10 @@
 </template>
 
 <script>
-  import {
-    getToken
-  } from '@/utils/auth'
+import {
+  updateBizFiles
+} from '@/api/dataEntry.js'
+import { getToken } from '@/utils/auth'
 export default {
   name: 'WeddingsFunerals',
   components: {},
@@ -40,27 +41,44 @@ export default {
       headers: {
         Token: getToken()
       },
-      Files: ''
+
+      form: {
+        fileList: []
+      },
+      Files: []
     }
   },
 
   methods: {
     handleSuccess(res, file) {
-      console.log(res)
-
+      this.Files.push(res.data)
     },
     handleRemove(file, fileList) {
       console.log(file, fileList)
     },
     handlePreview(file) {
       console.log(file)
-      this.Files = URL.createObjectURL(file.raw)
+      // this.Files = URL.createObjectURL(file.raw);
     },
     handleExceed(files, fileList) {
-      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
+      // this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)
+    },
+    onSubmit() {
+      console.log(this.params)
+      const params = {}
+      params.PersonId = parseInt(this.$route.query.PersonId)
+      params.TableType = 2
+      params.Files = this.Files
+      console.log(params)
+      this.listLoading = true
+      updateBizFiles(params).then(response => {
+        console.log(response)
+        // this.list = response.data.items
+        this.listLoading = false
+      })
     }
   }
 }

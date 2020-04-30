@@ -75,7 +75,6 @@ export default {
     },
     getList() {
       this.listLoading = true
-      console.log(this.form)
       getPerArchiversList(this.form).then(response => {
         this.dataSource = response.data.list
         this.dataSource.forEach((item, index) => {

@@ -1,16 +1,26 @@
 import router from './router'
+import {
+  asyncRoutes,
+  constantRoutes
+} from '@/router'
 import store from './store'
-import { Message } from 'element-ui'
+import {
+  Message
+} from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
-import { getToken } from '@/utils/auth' // get token from cookie
+import {
+  getToken
+} from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
 
-NProgress.configure({ showSpinner: false }) // NProgress Configuration
+NProgress.configure({
+  showSpinner: false
+}) // NProgress Configuration
 
 const whiteList = ['/login'] // no redirect whitelist
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   // start progress bar
   //NProgress.start()
 
@@ -23,7 +33,9 @@ router.beforeEach(async(to, from, next) => {
   if (hasToken) {
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
-      next({ path: '/' })
+      next({
+        path: '/'
+      })
       NProgress.done()
     } else {
       // try {
@@ -49,25 +61,44 @@ router.beforeEach(async(to, from, next) => {
       //   next(`/login?redirect=${to.path}`)
       //   NProgress.done()
       // }
-      const hasGetUserInfo = console.log(store.getters.config)
-      console.log('hasGetUserInfo');
-      console.log(hasGetUserInfo);
+      // console.log(store)
+      // console.log(localStorage.getItem('state'))
+      // if (localStorage.getItem('state')) {
 
-      if (hasGetUserInfo) {
+      //   store.replaceState(Object.assign({}, store.getters, JSON.parse(localStorage.getItem('state'))));
+      //   console.log("111")
+      //   console.log(store)
+
+      // }
+
+      const hasGetUserInfo = store.getters.config.appCnName
+
+
+      if (typeof(hasGetUserInfo) !== 'undefined') {
         next()
       } else {
         try {
 
-
-
           // get user info
           await store.dispatch('user/getInfo')
 
-          const accessRoutes = await store.dispatch('permission/generateRoutes', ['admin'])
 
-          console.log(accessRoutes)
-          router.addRoutes(accessRoutes)
-          next({ ...to, replace: true })
+          // const accessRoutes = await store.dispatch('permission/generateRoutes', ['admin'])
+
+
+
+          // router.selfaddRoutes(accessRoutes)
+
+          if (store.getters.roles.includes('duty')) {
+            router.options.routes = [...constantRoutes, ...asyncRoutes]
+            router.addRoutes(asyncRoutes)
+          } else {
+            router.options.routes = constantRoutes
+          }
+
+          next({ ...to,
+            replace: true
+          })
         } catch (error) {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')

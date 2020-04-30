@@ -11,7 +11,7 @@
               :on-preview="handlePreview"
               :on-remove="handleRemove"
               :before-remove="beforeRemove"
-              :limit="1"
+              multiple=""
               :on-exceed="handleExceed"
               :on-success="handleSuccess"
               :file-list="fileList"
@@ -29,9 +29,8 @@
 </template>
 
 <script>
-  import {
-    getToken
-  } from '@/utils/auth'
+import { updateBizFiles } from '@/api/dataEntry.js'
+import { getToken } from '@/utils/auth'
 export default {
   name: 'WeddingsFunerals',
   components: {},
@@ -40,25 +39,42 @@ export default {
       headers: {
         Token: getToken()
       },
-      Files: ''
-    }
+      Files: []
+    };
   },
 
   methods: {
+    handleSuccess(res, file) {
+      this.Files.push(res.data);
+    },
     handleRemove(file, fileList) {
-      console.log(file, fileList)
+      console.log(file, fileList);
     },
     handlePreview(file) {
-      this.Files = URL.createObjectURL(file.raw)
+      console.log(file);
+      // this.Files = URL.createObjectURL(file.raw);
     },
     handleExceed(files, fileList) {
-      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
+      // this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
     },
     beforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${file.name}？`)
+      return this.$confirm(`确定移除 ${file.name}？`);
+    },
+    onSubmit() {
+      const params = {}
+      params.PersonId = parseInt(this.$route.query.PersonId)
+      params.TableType = 1
+      params.Files = this.Files
+      console.log(params)
+      this.listLoading = true
+      updateBizFiles(params).then(response => {
+        console.log(response)
+        // this.list = response.data.items
+        this.listLoading = false
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

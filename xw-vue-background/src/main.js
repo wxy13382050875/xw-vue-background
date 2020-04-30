@@ -16,7 +16,7 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 // 引入dog2框架逻辑
-import '@/assets/dog2js/index.js'
+// import '@/assets/dog2js/index.js'
 // 引入框架级UI库
 // import dog2ui from '@/assets/dog2ui/index.js'
 

@@ -8,6 +8,7 @@
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-weddings-funerals?PersonId=' + PersonId">婚丧喜庆</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-refuse-hand?PersonId=' + PersonId">拒收或上交</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-annual-appraisal?PersonId=' + PersonId">年度考核</router-link></div>
+        <div class="right-item"><router-link :to="'/dataEntry/components/index/add-annual-awards?PersonId=' + PersonId">年度获奖情况</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-questioning-remind?PersonId=' + PersonId">约谈提醒</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-departure-transfer?PersonId=' + PersonId">离职交接</router-link></div>
         <div class="right-item"><router-link :to="'/dataEntry/components/index/add-reporting-activities?PersonId=' + PersonId">述职述廉，民主测评</router-link></div>

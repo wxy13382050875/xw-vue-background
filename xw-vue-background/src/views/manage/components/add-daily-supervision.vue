@@ -11,7 +11,7 @@
               :on-preview="handlePreview"
               :on-remove="handleRemove"
               :before-remove="beforeRemove"
-              :limit="1"
+              multiple=""
               :on-success="handleSuccess"
               :on-exceed="handleExceed"
               :file-list="fileList"
@@ -45,14 +45,14 @@ export default {
       headers: {
         Token: getToken()
       },
-      Files: null
+      Files: []
     }
   },
 
   methods: {
     handleSuccess(res, file) {
       console.log(res)
-      this.Files = res.data
+      this.Files.push(res.data)
     },
     handleRemove(file, fileList) {
       console.log(file, fileList)
@@ -62,7 +62,7 @@ export default {
       this.Files = URL.createObjectURL(file.raw)
     },
     handleExceed(files, fileList) {
-      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
+      // this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`)

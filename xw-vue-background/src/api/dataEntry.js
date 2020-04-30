@@ -56,7 +56,14 @@ export function createPrize(param) {
     data:param
   })
 }
-
+//创建创建获奖记录
+export function getPrizeList(param) {
+  return request({
+    url: '/biz/prize/list',
+    method: 'post',
+    data:param
+  })
+}
 //创建年度考核记录
 export function createAssessment(param) {
   return request({
@@ -65,7 +72,14 @@ export function createAssessment(param) {
     data:param
   })
 }
-
+//创建年度考核记录
+export function getAssessmentList(param) {
+  return request({
+    url: '/biz/assessment/list',
+    method: 'post',
+    data:param
+  })
+}
 //创建信访记录
 export function createPetition(param) {
   return request({
@@ -120,6 +134,23 @@ export function getTalkList(param) {
 export function updateBizFiles(param) {
   return request({
     url: '/biz/files/create',
+    method: 'post',
+    data:param
+  })
+}
+
+//创建礼品记录
+export function createGift(param) {
+  return request({
+    url: '/biz/gift/create',
+    method: 'post',
+    data:param
+  })
+}
+//礼品记录列表
+export function getGiftList(param) {
+  return request({
+    url: '/biz/gift/list',
     method: 'post',
     data:param
   })

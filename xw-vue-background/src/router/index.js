@@ -154,7 +154,7 @@ export const constantRoutes = [{
     }]
   },
 
-  
+
   // 404 page must be placed at the end !!!
   {
     path: '*',
@@ -167,7 +167,7 @@ export const constantRoutes = [{
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  
+
 {
     path: '/dataEntry',
     component: Layout,
@@ -177,7 +177,8 @@ export const asyncRoutes = [
       component: () => import('@/views/dataEntry/index'),
       meta: {
         title: '录入档案',
-        icon: 'form'
+        icon: 'form',
+        roles: ['duty'] // you can set roles in root nav
       },
 
     }]
@@ -193,7 +194,8 @@ export const asyncRoutes = [
       component: () => import('@/views/dataEntry/components/add-user-info'),
       meta: {
         title: '基本信息',
-        icon: 'form'
+        icon: 'form',
+        roles: ['duty'] // you can set roles in root nav
       }
     }]
   },
@@ -209,7 +211,8 @@ export const asyncRoutes = [
       redirect: '/dataEntry/components/index/add-user-info',
       meta: {
         title: '',
-        icon: 'form'
+        icon: 'form',
+        roles: ['duty'] // you can set roles in root nav
       },
       children: [{
           path: 'add-user-info',
@@ -218,7 +221,8 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-user-info'),
           meta: {
             title: '基本信息',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           }
         },
         {
@@ -228,7 +232,8 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-weddings-funerals'),
           meta: {
             title: '婚丧喜庆',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           },
         },
         {
@@ -238,7 +243,8 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-refuse-hand'),
           meta: {
             title: '拒收或上交',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           }
         },
         {
@@ -248,7 +254,19 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-annual-appraisal'),
           meta: {
             title: '年度考核',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
+          }
+        },
+        {
+          path: 'add-annual-awards',
+          hidden: true,
+          name: 'add-annual-awards',
+          component: () => import('@/views/dataEntry/components/add-annual-awards'),
+          meta: {
+            title: '年度获奖情况',
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           }
         },
         {
@@ -258,7 +276,8 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-questioning-remind'),
           meta: {
             title: '约谈提醒',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           }
         },
         {
@@ -268,7 +287,8 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-departure-transfer'),
           meta: {
             title: '离职交接',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           }
         },
         {
@@ -278,7 +298,8 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-reporting-activities'),
           meta: {
             title: '述职述廉，民主测评',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           }
         },
         {
@@ -288,7 +309,8 @@ export const asyncRoutes = [
           component: () => import('@/views/dataEntry/components/add-life-would'),
           meta: {
             title: '生活会对照检查',
-            icon: 'form'
+            icon: 'form',
+            roles: ['duty'] // you can set roles in root nav
           }
         },
 
@@ -313,5 +335,10 @@ export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
-
+router.selfaddRoutes = function (params){
+  router.matcher = new Router({mode: 'history'}).matcher;
+  // resetRouter()
+  // router.addRoutes(params)
+  // console.log(router);
+}
 export default router
